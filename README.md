@@ -10,7 +10,8 @@ Before/after HTML mockups for the baseline screener redesign, hosted live via Gi
 | Landing / Cover | landing-current.html | landing-redesign.html |
 | Email & Phone | email-phone-current.html | email-phone-redesign.html |
 | Education | education-current.html | education-redesign.html |
-| Results | result-current.html | result-redesign.html |
+| Results — Immediate | result-current.html | result-redesign.html |
+| Results — Delay | result-delay-current.html | result-delay-redesign.html |
 
 ## research/
 - personal-info-disclosure.html — behavioral-science brief on reducing drop-off when collecting personal information.

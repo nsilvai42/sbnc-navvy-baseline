@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Before (Live, verbatim)</title>
+<style>
+:root{ --coral:#FB5A52; --ink:#2A2230; --gray:#8A858C; --blue:#2F6BFF; --line:#E6E7EB; }
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:Helvetica,Arial,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#E9EAF1;color:var(--ink);line-height:1.4;
+  -webkit-font-smoothing:antialiased;
+  display:flex;justify-content:center;padding:28px 16px 56px;
+}
+.phone{
+  width:412px;max-width:100%;background:#0B0E23;border-radius:38px;padding:13px;
+  box-shadow:0 24px 64px rgba(11,14,35,0.28);
+}
+.screen{background:#fff;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;min-height:720px;}
+.topbar{height:9px;background:var(--coral);width:100%;}
+.head{display:flex;justify-content:flex-end;padding:16px 20px 0;}
+.head .logo{display:flex;align-items:center;gap:7px;}
+.head .logo svg{width:24px;height:24px;}
+.head .logo .wm{color:var(--coral);font-weight:800;font-size:15px;letter-spacing:0.5px;line-height:1;}
+.body{
+  flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:24px 28px 36px;
+}
+h1{font-size:28px;font-weight:800;line-height:1.2;letter-spacing:-0.4px;color:var(--ink);margin:0 0 28px;}
+.sub{font-size:15px;color:var(--gray);margin:0 0 30px;line-height:1.5;}
+.cta{
+  background:var(--coral);color:#fff;font-family:Helvetica,Arial,sans-serif;
+  font-weight:700;font-size:17px;border:none;border-radius:8px;padding:16px 34px;cursor:pointer;
+}
+.divider{height:1px;background:var(--line);width:100%;margin:34px 0 30px;}
+.applylink{color:var(--blue);font-size:15px;font-weight:500;text-decoration:underline;text-underline-offset:3px;}
+</style>
+</head>
+<body>
+
+<main class="phone" data-screen-label="Thank you — before (live)">
+  <div class="screen">
+    <div class="topbar"></div>
+    <div class="head">
+      <div class="logo">
+        <svg viewBox="0 0 120 120" aria-label="SBNC">
+          <path d="M60 7 103 45 60 67 17 45Z" fill="#FB5A52"></path>
+          <path d="M60 35 99 58 60 78 21 58Z" fill="#FB5A52"></path>
+          <path d="M60 61 96 82 60 101 24 82Z" fill="#FB5A52"></path>
+          <path d="M32 44 60 59 88 44" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M35 58 60 72 85 58" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M38 81 60 93 82 81" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span class="wm">SBNC</span>
+      </div>
+    </div>
+    <div class="body">
+      <h1>Thank you for completing the SNAP eligibility survey</h1>
+      <p class="sub">Survey results can be found by clicking the button below. The results will also be emailed to you.</p>
+      <button class="cta" type="button">See Your Results</button>
+      <div class="divider"></div>
+      <a class="applylink" href="#">To apply for benefits in Illinois, please visit this link</a>
+    </div>
+  </div>
+</main>
+
+
+</body></html>
