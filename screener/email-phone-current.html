@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email / Phone — Before (Live, verbatim)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bar:#0B0E23; --coral:#FF5A5F; --navy:#1E2658; --gray:#8A90A0;
+  --line:#D8DBE4; --cream:#F1F0E9; --info:#185FA5; --info-soft:#E6F1FB;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#E9EAF1;color:var(--navy);line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  display:flex;justify-content:center;padding:28px 16px 56px;
+}
+.phone{
+  width:430px;max-width:100%;background:#0B0E23;border-radius:38px;padding:13px;
+  box-shadow:0 24px 64px rgba(11,14,35,0.28);
+}
+.screen{background:#fff;border-radius:26px;overflow:hidden;}
+.appbar{
+  background:var(--bar);display:flex;align-items:center;gap:10px;padding:14px 16px;
+}
+.appbar .badge{
+  background:var(--coral);color:#fff;font-weight:700;font-size:13px;letter-spacing:0.5px;
+  padding:5px 11px;border-radius:8px;
+}
+.appbar .url{margin-left:auto;font-size:12.5px;color:rgba(255,255,255,0.62);}
+.body{padding:20px 18px 24px;}
+.titlebar{
+  background:var(--navy);color:#fff;border-radius:10px;padding:15px 18px;
+  font-size:18px;font-weight:700;line-height:1.3;margin:0 0 18px;
+}
+.intro{font-size:15px;color:var(--navy);margin:0 0 6px;line-height:1.5;}
+ul{margin:0 0 18px;padding-left:20px;}
+ul li{font-size:14.5px;color:var(--gray);margin:6px 0;line-height:1.4;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:15px;font-weight:700;margin-bottom:7px;color:var(--navy);}
+.inp{width:100%;height:48px;border:1px solid var(--line);border-radius:10px;background:#fff;}
+.helper{background:var(--info-soft);border-radius:10px;padding:14px 16px;font-size:14px;font-weight:700;color:var(--info);margin:8px 0 0;line-height:1.4;}
+.check{display:flex;gap:12px;align-items:flex-start;margin:14px 0;font-size:15px;color:var(--navy);line-height:1.4;}
+.check .box{width:20px;height:20px;border:1.5px solid #B9BECF;border-radius:5px;flex-shrink:0;margin-top:1px;background:#fff;}
+.check a{color:var(--navy);text-decoration:underline;}
+.fine{font-size:13px;color:var(--gray);line-height:1.5;margin:14px 0 18px;}
+.next{
+  display:block;width:100%;background:#fff;border:1px solid #CFD2DC;border-radius:10px;
+  padding:16px;font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--navy);
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+<main class="phone" data-screen-label="Email/phone — before (live)">
+  <div class="screen">
+    <div class="appbar">
+      <span class="badge">SBNC</span>
+      <span class="url">eligibility.navvyai.com</span>
+    </div>
+    <div class="body">
+      <div class="titlebar">Determine your eligibility for SNAP benefits</div>
+      <p class="intro">To get started we'll need to ask a few quick questions about you and your household, such as:</p>
+      <ul>
+        <li>Where you live</li>
+        <li>How many people are in your household</li>
+        <li>Your health status</li>
+        <li>Whether you're working or going to school</li>
+        <li>Your regular expenses</li>
+        <li>And a few other details</li>
+      </ul>
+
+      <div class="field"><label>First Name *</label><div class="inp"></div></div>
+      <div class="field"><label>Last Name *</label><div class="inp"></div></div>
+      <div class="field">
+        <label>Email *</label><div class="inp"></div>
+        <div class="helper">If you are a student, please enter your .edu email address</div>
+      </div>
+      <div class="field"><label>Phone number *</label><div class="inp"></div></div>
+      <div class="field"><label>How did you first hear about this eligibility screener?</label><div class="inp"></div></div>
+
+      <div class="check"><div class="box"></div><div>I would like to receive information texts</div></div>
+      <div class="check"><div class="box"></div><div>I accept the Student Basic Needs Coalition's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a> *</div></div>
+
+      <p class="fine">By providing your phone number you agree to receive informational text messages… Msg &amp; data rates may apply. Reply HELP for help or STOP to cancel.</p>
+
+      <button class="next" type="button">Next →</button>
+    </div>
+  </div>
+</main>
+</body>
+</html>

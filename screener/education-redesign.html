@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education — After (our words)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#FF5A5F; --navy:#1E2658; --gray:#7A8093; --line:#D8DBE4; --field:#FBFBFC;
+  --amber-bg:#FCF0E2; --amber-line:#F1D8B6; --amber-ink:#9A6B1E;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#E9EAF1;color:var(--navy);line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  display:flex;justify-content:center;padding:28px 16px 56px;
+}
+.phone{
+  width:430px;max-width:100%;background:#0B0E23;border-radius:38px;padding:13px;
+  box-shadow:0 24px 64px rgba(11,14,35,0.28);
+}
+.screen{background:#fff;border-radius:26px;overflow:hidden;padding:22px 20px 26px;}
+.brand{display:flex;flex-direction:column;align-items:flex-end;gap:3px;margin:0 0 14px;}
+.brand .dia{width:11px;height:11px;background:var(--coral);transform:rotate(45deg);border-radius:2px;}
+.brand .wm{color:var(--coral);font-weight:700;font-size:18px;letter-spacing:0.5px;line-height:1;}
+.titlebar{
+  background:var(--navy);color:#fff;border-radius:10px;padding:15px 18px;
+  font-size:19px;font-weight:700;margin:0 0 20px;
+}
+.q{font-size:17px;font-weight:700;color:var(--navy);margin:0 0 4px;line-height:1.3;}
+.helper{font-size:14px;color:var(--gray);margin:0 0 12px;line-height:1.5;}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 22px;}
+.opt{
+  display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:12px;
+  padding:14px 16px;font-size:16px;color:var(--navy);background:#fff;cursor:pointer;
+}
+.opt.sel{border-color:var(--coral);}
+.rad{width:22px;height:22px;border-radius:50%;border:2px solid #C2C6D4;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.opt.sel .rad{border-color:var(--coral);}
+.opt.sel .rad::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--coral);}
+.combo{
+  display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;font-size:16px;color:var(--gray);background:var(--field);margin:0 0 22px;
+}
+.combo .chev{margin-left:auto;color:var(--gray);}
+.callout{
+  background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:12px;
+  padding:14px 16px;font-size:14.5px;color:var(--amber-ink);line-height:1.5;margin:0 0 16px;font-weight:500;
+}
+.stack{display:flex;flex-direction:column;gap:11px;margin:0 0 22px;}
+.next{
+  display:inline-block;background:#fff;border:1px solid #CFD2DC;border-radius:10px;
+  padding:14px 30px;font-family:Georgia,serif;font-size:18px;font-weight:700;color:var(--navy);
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#1E2658">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1E2658"></rect>
+    <rect x="430" y="250" width="340" height="90" rx="14" fill="#0E1340"></rect>
+    <rect x="460" y="278" width="180" height="34" rx="8" fill="#ffffff"></rect>
+    <circle cx="600" cy="430" r="26" fill="#FF5A5F"></circle>
+    <rect x="470" y="500" width="260" height="20" rx="10" fill="#FF5A5F" opacity="0.5"></rect>
+  </svg>
+</template>
+<main class="phone" data-screen-label="Education — after (our words)">
+  <div class="screen">
+    <div class="brand"><span class="dia"></span><span class="wm">SBNC</span></div>
+    <div class="titlebar">Education</div>
+
+    <p class="q">Are you currently enrolled in college or another program? *</p>
+    <div class="twocol">
+      <div class="opt sel"><span class="rad"></span>Yes</div>
+      <div class="opt"><span class="rad"></span>No</div>
+    </div>
+
+    <p class="q">Find your school *</p>
+    <p class="helper">Start typing your school's name. Can't find it? Pick "Other" and type it in.</p>
+    <div class="combo">Start typing… <span class="chev">▾</span></div>
+
+    <p class="q">How are you enrolled? *</p>
+    <div class="callout">Not sure? You can pick your best guess and confirm with your school's registrar or financial aid department later.</div>
+    <div class="stack">
+      <div class="opt sel"><span class="rad"></span>Full-time</div>
+      <div class="opt"><span class="rad"></span>Half-time or more</div>
+      <div class="opt"><span class="rad"></span>Less than half-time</div>
+    </div>
+
+    <button class="next" type="button">Next →</button>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBNC Landing — Before (Live, verbatim)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#FF5A5F; --ink:#1A1320; --gray:#8A858C; --cream:#F1F0E9; --line:#E4E6EC;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:Georgia,'Times New Roman',serif;
+  background:#E9EAF1;
+  color:var(--ink);
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  display:flex;justify-content:center;
+  padding:28px 16px 56px;
+}
+.phone{
+  width:412px;max-width:100%;
+  background:#0B0E23;
+  border-radius:38px;
+  padding:14px;
+  box-shadow:0 24px 64px rgba(11,14,35,0.28);
+}
+.screen{
+  background:#fff;
+  border-radius:26px;
+  overflow:hidden;
+  padding:40px 30px 48px;
+}
+.brand{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 34px;}
+.brand svg{width:52px;height:52px;flex-shrink:0;}
+.brand .wm{font-family:Arial,Helvetica,sans-serif;font-weight:800;color:var(--coral);font-size:34px;line-height:1;letter-spacing:-0.5px;}
+.brand .wm small{display:block;font-size:11px;font-weight:600;letter-spacing:0.2px;margin-top:3px;}
+h1{
+  text-align:center;
+  font-size:30px;line-height:1.18;font-weight:700;
+  margin:0 0 26px;color:#1A1320;
+}
+p{font-size:17px;color:var(--gray);text-align:center;margin:0 0 22px;line-height:1.5;}
+.btn{
+  display:block;width:max-content;max-width:100%;
+  margin:34px auto 0;
+  background:#fff;border:1px solid #CFD2DC;border-radius:8px;
+  padding:16px 40px;font-family:Georgia,serif;font-size:20px;font-weight:700;
+  color:var(--ink);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,0.04);
+}
+</style>
+</head>
+<body>
+<main class="phone" data-screen-label="SBNC landing — before (live)">
+  <div class="screen">
+    <div class="brand">
+      <svg viewBox="0 0 120 120" aria-label="SBNC">
+        <path d="M60 7 103 45 60 67 17 45Z" fill="#FF5A5F"/>
+        <path d="M60 35 99 58 60 78 21 58Z" fill="#FF5A5F"/>
+        <path d="M60 61 96 82 60 101 24 82Z" fill="#FF5A5F"/>
+        <path d="M32 44 60 59 88 44" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M35 58 60 72 85 58" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 81 60 93 82 81" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="wm">SBNC<small>Student Basic Needs Coalition</small></div>
+    </div>
+
+    <h1>1 in 3 students qualify for up to $298 monthly in free groceries</h1>
+
+    <p>Student Basic Needs Coalition (SBNC) is a national nonprofit dedicated to tackling the food, housing, and financial insecurity crisis among college students.</p>
+    <p>Since launching, we've referred students to more than $100 million in benefits.</p>
+    <p>We encourage you to use our screener to see if you are eligible for SNAP and Medicaid.</p>
+
+    <button class="btn" type="button">Check if you qualify</button>
+  </div>
+</main>
+</body>
+</html>

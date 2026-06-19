@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBNC Landing — After (improved)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#FF5A5F; --coral-dark:#E84A4F;
+  --navy:#1E2658; --green:#0E7A4E;
+  --cream:#F8F8F4; --gray:#7A8093; --line:#E3E5EC; --tile:#F4F5F7;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#E9EAF1;color:var(--navy);line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  display:flex;justify-content:center;padding:28px 16px 56px;
+}
+.phone{
+  width:412px;max-width:100%;
+  background:#0B0E23;border-radius:38px;padding:14px;
+  box-shadow:0 24px 64px rgba(11,14,35,0.28);
+}
+.screen{
+  background:#fff;border-radius:26px;overflow:hidden;
+  padding:30px 22px 26px;
+}
+.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 22px;}
+.brand svg{width:44px;height:44px;flex-shrink:0;}
+.brand .wm{font-weight:800;color:var(--coral);font-size:30px;line-height:1;letter-spacing:-0.5px;}
+.brand .wm small{display:block;font-size:9.5px;font-weight:600;letter-spacing:0.3px;margin-top:3px;}
+
+h1{
+  text-align:center;font-size:25px;line-height:1.22;font-weight:800;
+  letter-spacing:-0.4px;margin:0 0 8px;color:var(--navy);
+}
+h1 .hl{color:var(--green);}
+.sub{text-align:center;font-size:15px;font-weight:500;color:var(--navy);margin:0 0 22px;}
+
+.tiles{display:flex;flex-direction:column;gap:11px;margin:0 0 24px;}
+.tile{
+  display:flex;align-items:center;gap:14px;
+  background:var(--tile);border:1px solid var(--line);border-radius:14px;
+  padding:15px 16px;
+}
+.tile .ic{
+  width:42px;height:42px;border-radius:11px;flex-shrink:0;
+  background:#FFE8E9;color:var(--coral);
+  display:flex;align-items:center;justify-content:center;
+}
+.tile .ic svg{width:22px;height:22px;}
+.tile b{display:block;font-size:15px;font-weight:700;color:var(--navy);line-height:1.25;}
+.tile span{display:block;font-size:12.5px;color:var(--gray);margin-top:2px;line-height:1.4;}
+
+.aboutlabel{
+  font-size:11.5px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;
+  color:var(--gray);margin:0 0 8px;
+}
+.aboutbody{font-size:13.5px;color:#5C6275;margin:0 0 18px;line-height:1.55;}
+
+.trust{
+  background:#FAFAF7;border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;font-size:12.5px;color:var(--gray);line-height:1.55;margin:0 0 22px;
+}
+.trust b{color:var(--navy);font-weight:600;}
+
+.cta{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;background:var(--coral);color:#fff;
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;
+  border:none;border-radius:13px;padding:17px;cursor:pointer;
+  box-shadow:0 10px 26px rgba(255,90,95,0.40);
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.cta:hover{background:var(--coral-dark);transform:translateY(-1px);box-shadow:0 14px 30px rgba(255,90,95,0.46);}
+.cta:active{transform:translateY(0);}
+.cta svg{width:18px;height:18px;}
+.freenote{text-align:center;font-size:12.5px;color:var(--gray);margin:12px 0 0;}
+</style>
+</head>
+<body>
+<main class="phone" data-screen-label="SBNC landing — after (improved)">
+  <div class="screen">
+    <div class="brand">
+      <svg viewBox="0 0 120 120" aria-label="SBNC">
+        <path d="M60 7 103 45 60 67 17 45Z" fill="#FF5A5F"/>
+        <path d="M60 35 99 58 60 78 21 58Z" fill="#FF5A5F"/>
+        <path d="M60 61 96 82 60 101 24 82Z" fill="#FF5A5F"/>
+        <path d="M32 44 60 59 88 44" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M35 58 60 72 85 58" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M38 81 60 93 82 81" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="wm">SBNC<small>Student Basic Needs Coalition</small></div>
+    </div>
+
+    <h1>1 in 3 students qualify for <span class="hl">up to $298 a month in free groceries</span></h1>
+    <p class="sub">A quick check to see what you qualify for.</p>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><b>About 5–10 minutes</b><span>or a bit longer if you share finances with someone</span></div>
+      </div>
+      <div class="tile">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h10M4 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="7" r="2.6" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="17" r="2.6" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <div><b>Questions adjust to you</b><span>you only answer what's relevant</span></div>
+      </div>
+      <div class="tile">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="currentColor"/></svg>
+        </div>
+        <div><b>Instant result</b><span>see your estimate at the end</span></div>
+      </div>
+    </div>
+
+    <p class="aboutlabel">What we'll ask about</p>
+    <p class="aboutbody">All questions are asked only to give you the most accurate estimate of how much you could qualify for. We don't ask for any personal information that isn't needed for that.</p>
+
+    <div class="trust">Built by <b>SBNC</b>, which has connected students to <b>$100M+</b> in benefits. This is a check, not an application — your state decides your eligibility when you apply.</div>
+
+    <button class="cta" type="button">Check if I qualify
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p class="freenote">Free · takes just a few minutes</p>
+  </div>
+</main>
+</body>
+</html>
