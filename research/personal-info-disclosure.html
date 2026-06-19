@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reducing Drop-Off When Collecting Personal Information</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --dark-teal: #004357;
+    --teal: #1c8a70;
+    --blue-teal: #087084;
+    --lime: #bed73c;
+    --yellow: #fddb12;
+    --orange: #f37321;
+    --dark-gray: #3c3e3e;
+    --light-bg: #f7f9fa;
+    --white: #ffffff;
+    --red-accent: #d94f4f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dark-gray);
+    background: var(--light-bg);
+    line-height: 1.6;
+  }
+
+  .header {
+    background: var(--dark-teal);
+    color: white;
+    padding: 40px 48px 32px;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 13px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .header p {
+    font-size: 16px;
+    opacity: 0.85;
+    max-width: 720px;
+  }
+
+  .problem-strip {
+    background: var(--red-accent);
+    color: white;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-size: 15px;
+  }
+  .problem-strip .stat {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .problem-strip .stat-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+  }
+  .problem-strip .divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(255,255,255,0.3);
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .section {
+    background: white;
+    border-radius: 10px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .section h2 {
+    color: var(--dark-teal);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--lime);
+    display: inline-block;
+  }
+
+  .section h3 {
+    color: var(--blue-teal);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 20px 0 8px;
+  }
+
+  .section p, .section li {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  .section ul { padding-left: 20px; }
+  .section li { margin-bottom: 6px; }
+
+  .evidence-box {
+    background: #f0f7f5;
+    border-left: 4px solid var(--teal);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .evidence-box strong { color: var(--dark-teal); }
+
+  .intervention-card {
+    border: 1px solid #e0e6e8;
+    border-radius: 10px;
+    padding: 24px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .intervention-card.high {
+    border-left: 5px solid var(--lime);
+  }
+  .intervention-card.medium {
+    border-left: 5px solid var(--yellow);
+  }
+  .intervention-card.low {
+    border-left: 5px solid var(--orange);
+  }
+
+  .priority-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .priority-tag.high { background: var(--lime); color: var(--dark-teal); }
+  .priority-tag.medium { background: var(--yellow); color: var(--dark-gray); }
+  .priority-tag.low { background: #ffe0c2; color: #a14700; }
+
+  .intervention-card h4 {
+    color: var(--dark-teal);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .intervention-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+
+  .key-insight {
+    background: var(--dark-teal);
+    color: white;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+  .key-insight h3 {
+    color: var(--lime);
+    margin-bottom: 12px;
+  }
+  .key-insight p {
+    font-size: 15px;
+    line-height: 1.65;
+    opacity: 0.92;
+  }
+
+  .sources {
+    font-size: 12px;
+    color: #777;
+    padding: 20px 36px;
+  }
+  .sources a { color: var(--blue-teal); text-decoration: none; }
+  .sources a:hover { text-decoration: underline; }
+
+  .constraint-box {
+    background: #fdf0f0;
+    border: 1px solid #f0c0c0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .constraint-box::before {
+    content: "⚠ Constraint: ";
+    font-weight: 700;
+    color: var(--red-accent);
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+    .problem-strip { flex-direction: column; gap: 16px; }
+    .header { padding: 28px 20px 24px; }
+    .container { padding: 20px 12px; }
+    .section { padding: 24px 20px; }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 16px 0;
+  }
+  th {
+    background: var(--dark-teal);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e8ecee;
+  }
+  tr:nth-child(even) td { background: #f7f9fa; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span>ideas42</span>
+    <span>Behavioral Design Brief</span>
+  </div>
+  <h1>Reducing Drop-Off When Collecting Personal Information</h1>
+  <p>What behavioral science tells us about collecting personal information in benefits enrollment forms — why people abandon at this step, and the evidence behind what works.</p>
+</div>
+
+<div class="container">
+
+  <!-- WHY THIS HAPPENS -->
+  <div class="section">
+    <h2>Why People Abandon at Personal Info Steps</h2>
+    <p>Research identifies three overlapping behavioral mechanisms that explain why asking for personal information — name, email, phone — creates such a sharp drop-off:</p>
+
+    <h3>1. Privacy & Data Security Fears</h3>
+    <p>Studies consistently find that concerns about how personal data will be used are the top driver of form abandonment. One large-scale study found that 81% of users have abandoned a form specifically due to data security concerns. Okta's 2023 Digital Trust Index found that 86% of consumers have abandoned a registration process because it required too much personal information.</p>
+    <div class="evidence-box">
+      <strong>Key stat:</strong> Removing a single optional phone number field increased one company's conversion rate by 79% (Unbounce). Expedia increased profits by millions after removing just one "Company Name" field.
+    </div>
+    <p>In the benefits context, this fear is amplified. People applying for SNAP or Medicaid may worry about their information being shared with government agencies, affecting their immigration status, or being used for marketing — particularly applicants from marginalized communities who have historical reasons to distrust data collection.</p>
+
+    <h3>2. Premature Commitment ("Account Creation Wall")</h3>
+    <p>Being asked for personal info before seeing any value creates what UX researchers call a "registration wall." The applicant hasn't yet learned what benefits they're eligible for or what the tool can do for them. The ask feels like commitment without reciprocity.</p>
+    <p>This maps directly to the behavioral science concept of <strong>reciprocity</strong> — people are more willing to share information after they've received something of value first. Asking for personal information <em>before</em> delivering any eligibility results violates this principle.</p>
+
+    <h3>3. Cognitive Overload & Sludge</h3>
+    <p>ideas42's own work on benefits enrollment has documented how "sludge" — excessive friction in administrative processes — creates barriers that disproportionately affect the people most in need. Each additional form field increases cognitive load and creates another decision point where an applicant can opt out. In one case, reducing administrative sludge in a benefits process decreased drop-off by 46% across 450,000 clients.</p>
+  </div>
+
+  <!-- WHAT THE EVIDENCE SAYS WORKS -->
+  <div class="section">
+    <h2>What the Evidence Says Works</h2>
+    <p>Research from behavioral science, UX, and benefits enrollment converges on several strategies with strong evidence bases:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Strategy</th>
+          <th>Evidence</th>
+          <th>Effect Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Reduce # of fields</strong></td>
+          <td>Cutting form fields by 50% boosts conversion</td>
+          <td>Up to +120%</td>
+        </tr>
+        <tr>
+          <td><strong>Progressive disclosure</strong></td>
+          <td>Show value first, collect info incrementally</td>
+          <td>10–20% less abandonment</td>
+        </tr>
+        <tr>
+          <td><strong>Progress indicators</strong></td>
+          <td>Visual progress bars reduce abandonment</td>
+          <td>Up to –28%</td>
+        </tr>
+        <tr>
+          <td><strong>Privacy nudges</strong></td>
+          <td>Trust badges, plain-language privacy assurances</td>
+          <td>Hedges' g = 0.32 (small-medium)</td>
+        </tr>
+        <tr>
+          <td><strong>Simplification + assistance</strong></td>
+          <td>H&R Block FAFSA experiment (prefilled forms + help)</td>
+          <td>+8pp college enrollment</td>
+        </tr>
+        <tr>
+          <td><strong>Plain language</strong></td>
+          <td>Code for America/GetCalFresh SNAP redesign</td>
+          <td>Significantly ↑ completion</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="key-insight">
+      <h3>The FAFSA Lesson</h3>
+      <p>The landmark H&R Block FAFSA experiment is especially relevant here. Researchers found that <strong>information alone had zero effect</strong> on college enrollment. Only when they combined simplified forms with active assistance did they see the 8 percentage point increase. This tells us that simply telling students "your data is safe" won't move the needle — we need to structurally reduce the friction and provide active support through the process.</p>
+    </div>
+  </div>
+
+  <!-- SPECIFIC INTERVENTIONS -->
+  <div class="section">
+    <h2>Evidence-Based Best Practices</h2>
+    <p>These practices focus on what teams can most readily change: the framing, language, context, and communications surrounding the personal-information step.</p>
+
+    <div class="intervention-card high">
+      <div class="priority-tag high">High Priority — Framing & Language</div>
+      <h4>1. Reframe the "Why" Before the Ask</h4>
+      <p>When a flow jumps straight to asking for name, email, and phone, there's no framing for <em>why</em> the information is needed or what the person gets in return.</p>
+      <p><strong>What to do:</strong> Add clear, plain-language messaging explaining (a) why the info is needed ("so we can send you your personalized eligibility results"), (b) what won't happen with it ("we won't share this with your school or any government agency"), and (c) what the person gets. Reinforce the value proposition right at the point of the ask, not only on an earlier screen.</p>
+    </div>
+
+    <div class="intervention-card high">
+      <div class="priority-tag high">High Priority — Trust Signals</div>
+      <h4>2. Add Explicit Privacy Assurances</h4>
+      <p>Meta-analytic evidence shows privacy nudges have a consistent small-to-medium effect (g = 0.32) on willingness to share personal information. In benefits contexts, where fear of government surveillance is a documented barrier, these signals matter even more.</p>
+      <p><strong>What to do:</strong> Include visible trust signals: a brief, plain-language privacy statement near the fields; institutional trust markers (e.g., partner or university logos); and a concrete commitment about data use. Avoid legalistic privacy-policy language — it often backfires and increases anxiety.</p>
+    </div>
+
+    <div class="intervention-card high">
+      <div class="priority-tag high">High Priority — Value Proposition</div>
+      <h4>3. Lead with the Benefit, Not the Ask</h4>
+      <p>Progressive disclosure research shows that people are far more willing to share personal information after they've received something of value. Asking for info before delivering any value works against this.</p>
+      <p><strong>What to do:</strong> In the communications that precede the form (email, text), emphasize what the person stands to gain with concrete, specific numbers: "Students like you qualify for an average of $234/month in SNAP benefits." Prime the value before the ask.</p>
+    </div>
+
+    <div class="intervention-card medium">
+      <div class="priority-tag medium">Medium Priority — Social Proof</div>
+      <h4>4. Use Social Proof to Normalize the Process</h4>
+      <p>Behavioral research consistently shows that people are more likely to take action when they see others like them doing the same. This is particularly powerful for reducing the stigma that often accompanies benefits applications.</p>
+      <p><strong>What to do:</strong> Include peer-oriented messaging: "Over 5,000 students at your school have already checked their eligibility" or "8 out of 10 students who check are eligible for at least one benefit." This normalizes both the action and the information sharing.</p>
+    </div>
+
+    <div class="intervention-card medium">
+      <div class="priority-tag medium">Medium Priority — Process Transparency</div>
+      <h4>5. Set Expectations About What Comes Next</h4>
+      <p>Uncertainty about form length and complexity drives abandonment. Progress indicators reduce abandonment by up to 28% because they resolve the "how much longer?" anxiety.</p>
+      <p><strong>What to do:</strong> Before or at the personal-information step, communicate (a) how long it takes ("3 minutes"), (b) how many questions ("just 8 quick questions"), and (c) what happens after ("you'll see your results immediately"). A progress bar is ideal; where that isn't possible, this framing can live in the surrounding copy.</p>
+    </div>
+
+    <div class="intervention-card low">
+      <div class="priority-tag low">Explore — Alternative Collection Timing</div>
+      <h4>6. Defer Personal-Information Collection</h4>
+      <p>The strongest evidence-based approach is to let people answer eligibility questions <em>first</em> and collect personal info <em>after</em> they see their results — flipping the usual order. This is progressive disclosure in action: deliver value, then ask for commitment. Unbounce found that removing just one field (phone) increased conversions 79%.</p>
+      <p><strong>Why it matters:</strong> It addresses the root cause directly — the ask comes before the value. Where the form itself can't be reordered, this is worth flagging as a future structural improvement.</p>
+    </div>
+  </div>
+
+  <!-- WHERE THESE APPLY -->
+  <div class="section">
+    <h2>Where These Practices Apply</h2>
+    <p>The practices above map to three touchpoints around the form:</p>
+
+    <div class="two-col">
+      <div style="background: #f0f7f5; border-radius: 8px; padding: 20px;">
+        <h3 style="color: var(--dark-teal); margin-top: 0;">📧 Outbound Email/SMS</h3>
+        <p style="font-size: 14px;">The first touchpoint. Lead with specific dollar amounts, set time expectations ("3 minutes"), preemptively address privacy concerns, and use social proof ("5,000+ students already checked").</p>
+      </div>
+      <div style="background: #f0f7f5; border-radius: 8px; padding: 20px;">
+        <h3 style="color: var(--dark-teal); margin-top: 0;">📋 Cover / Intro Page</h3>
+        <p style="font-size: 14px;">The last touchpoint before the ask. Reinforce the value proposition, add trust signals, and set process expectations. Even small copy changes here affect whether someone proceeds to the personal-information step.</p>
+      </div>
+      <div style="background: #f0f7f5; border-radius: 8px; padding: 20px;">
+        <h3 style="color: var(--dark-teal); margin-top: 0;">🔗 Landing Page / Transition</h3>
+        <p style="font-size: 14px;">The handoff between the email and the form. Rather than a bare link, an enhanced landing page can carry framing, trust signals, and social proof before the form loads.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="section sources" style="padding: 20px 36px;">
+    <h2 style="font-size: 16px;">Sources & Further Reading</h2>
+    <p style="margin-top: 12px;">
+      • <a href="https://www.descope.com/learn/post/progressive-profiling">Progressive Profiling 101 — Descope</a><br>
+      • <a href="https://wpforms.com/what-is-progressive-profiling/">What is Progressive Profiling — WPForms</a><br>
+      • <a href="https://theaudiencers.com/registration-walls-18-benchmarks-to-better-convert-users-into-members/">Registration Walls: 18 Benchmarks — The Audiencers</a><br>
+      • Bettinger et al. (2012). The Role of Simplification and Information in College Decisions: Results from the H&R Block FAFSA Experiment. <em>Quarterly Journal of Economics</em>.<br>
+      • <a href="https://add-to-calendar-pro.com/articles/best-practices-for-form-design">7 Essential Best Practices for Form Design — Add to Calendar PRO</a><br>
+      • ideas42 (various). Work on SNAP, WIC, and benefits enrollment friction / sludge reduction.<br>
+      • Code for America / GetCalFresh — simplified SNAP application redesign.<br>
+      • Acquisti, Adjerid, et al. Privacy nudges meta-analysis (Hedges' g = 0.32 effect size).<br>
+      • Sunstein, C.R. (2020). <em>Sludge: What Stops Us from Getting Things Done and What to Do about It.</em>
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>

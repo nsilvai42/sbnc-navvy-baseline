@@ -1,6 +1,6 @@
 # SBNC x Navvy mockups
 
-Placeholder-only screener mockups ("Example — not production"). No PII.
+Placeholder / example content for design review ("Example — not production").
 
 ## screener/
 Before/after HTML mockups for the baseline screener redesign, hosted live via GitHub Pages:
@@ -10,5 +10,9 @@ Before/after HTML mockups for the baseline screener redesign, hosted live via Gi
 | Landing / Cover | landing-current.html | landing-redesign.html |
 | Email & Phone | email-phone-current.html | email-phone-redesign.html |
 | Education | education-current.html | education-redesign.html |
+| Results | result-current.html | result-redesign.html |
 
-Live URLs: https://nsilvai42.github.io/sbnc-navvy-baseline/screener/<file>.html
+## research/
+- personal-info-disclosure.html — behavioral-science brief on reducing drop-off when collecting personal information.
+
+Live URLs: https://nsilvai42.github.io/sbnc-navvy-baseline/<folder>/<file>.html
