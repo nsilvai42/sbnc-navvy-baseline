@@ -16,4 +16,7 @@ Before/after HTML mockups for the baseline screener redesign, hosted live via Gi
 ## research/
 - personal-info-disclosure.html — behavioral-science brief on reducing drop-off when collecting personal information.
 
+## roadmap/
+- landing.html — mobile-first Navvy roadmap mockup.
+
 Live URLs: https://nsilvai42.github.io/sbnc-navvy-baseline/<folder>/<file>.html
