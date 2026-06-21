@@ -1,0 +1,15 @@
+# Never commit secrets or student data
+.env
+.env.*
+*.key
+*.pem
+secrets/
+# Local / OS
+.DS_Store
+*.log
+node_modules/
+__pycache__/
+.venv/
+
+# Reminder: this repo holds only public program info + prompts + QA.
+# No screener data, no application data, no PII, no API keys.

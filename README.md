@@ -29,3 +29,13 @@ Mobile roadmap-flow mockups:
 | Choose your benefits | choose-your-benefits.html |
 
 Live URLs: https://nsilvai42.github.io/sbnc-navvy-baseline/<folder>/<file>.html
+
+## chatbot/ — Navvy chatbot baseline (v1.1)
+
+Source of truth for the Navvy benefits-navigation chatbot: the four system-prompt blocks, a knowledge-base scaffold (student-facing voice + official-source authority tiers, with metadata), settings, docs, and QA. **No student data** — public program info and placeholders only. Full layout in [`chatbot/README.md`](chatbot/README.md).
+
+- `chatbot/prompts/` — prompt blocks: 01 identity · 02 Wisconsin state context · 03 data & API · 04 guardrails
+- `chatbot/settings.md` — model, retrieval, and deployment settings
+- `chatbot/docs/` — architecture + paste-ready prompts/settings
+- `chatbot/knowledge-base/wi/` — student-facing, official-sources (see MANIFEST), escalation-ops, + metadata template
+- `chatbot/CHANGELOG.md`
