@@ -30,6 +30,23 @@ Mobile roadmap-flow mockups:
 
 Live URLs: https://nsilvai42.github.io/sbnc-navvy-baseline/<folder>/<file>.html
 
+## state-general-roadmap/
+Post-screener "state general roadmap" idea set (ideas42 mockups) — the at-a-glance roadmap that shows a student their estimate and next steps after the screener. Two portal models (single combined vs. separate portals), each in a mobile and a web frame, plus the progress-comms and self-reported-progress companions. Self-contained: shared styles in `roadmap-kit.css`, layout toggle in `roadmap-toggle.js`. Start at `index.html`.
+
+| Screen | File |
+|---|---|
+| Overview / hub | index.html |
+| Roadmap — mobile, single portal (CA) | roadmap-mobile-single.html |
+| Roadmap — web, single portal (CA) | roadmap-web-single.html |
+| Roadmap — mobile, separate portals (TN) | roadmap-mobile-separate.html |
+| Roadmap — web, separate portals (TN) | roadmap-web-separate.html |
+| Progress comms — single portal | comms-single.html |
+| Progress comms — separate portals | comms-separate.html |
+| Self-reported progress | self-report.html |
+| Feedback / build reference | feedback-build-reference.html |
+
+Notes on the design decisions and suggested meeting flow: `MEETING_GUIDE.md`.
+
 ## chatbot/ — Navvy chatbot baseline (v1.1)
 
 Source of truth for the Navvy benefits-navigation chatbot: the four system-prompt blocks, a knowledge-base scaffold (student-facing voice + official-source authority tiers, with metadata), settings, docs, and QA. **No student data** — public program info and placeholders only. Full layout in [`chatbot/README.md`](chatbot/README.md).

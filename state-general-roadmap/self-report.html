@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-report — progress capture · SBNC × ideas42</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="roadmap-kit.css">
+<style>.stage{max-width:1000px;}.phone{width:392px;}</style>
+</head>
+<body>
+<div class="chrome"><svg class="pyr" viewBox="0 0 100 100" aria-label="SBNC"><polygon points="50,18 78,40 22,40" fill="#FF5A5F"></polygon><polygon points="50,46 84,68 16,68" fill="#FF5A5F"></polygon><polygon points="50,74 90,96 10,96" fill="#FF5A5F"></polygon></svg><span><b>SBNC × ideas42</b> · Collecting self-reported progress</span></div>
+<div class="stage">
+<p class="framecap"><b>Two ways to capture self-reported progress</b>, side by side — both open the same "I heard back" branch. This is a <b>self-reported signal</b>: Navvy can't see the state portal, so it only guides the next step and feeds measurement. Report patterns among respondents; never present it as portal truth or a population denial rate.</p>
+
+<div class="twoup">
+
+  <!-- LEFT: in-roadmap popup / module -->
+  <div>
+    <div class="col-cap"><p class="ce">Option A</p><p class="ct">In the roadmap</p><p class="cs">A standing "Update your progress" module under the next-step action.</p></div>
+    <div class="phone"><div class="device">
+      <div class="appbar"><span class="badge"><svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,18 78,40 22,40" fill="#fff"></polygon><polygon points="50,46 84,68 16,68" fill="#fff"></polygon><polygon points="50,74 90,96 10,96" fill="#fff"></polygon></svg></span><span class="campus">City College · CA</span><span class="signout">Sign out</span></div>
+      <div class="body">
+        <div class="nextstep"><span class="ns-kicker">Your next step</span><h3 class="ns-title">Complete your SNAP application.</h3></div>
+        <a class="btn" href="#" style="margin-bottom:16px">Go to your state's SNAP portal →</a>
+
+        <div class="prog">
+          <div class="ph"><h4>Update your progress</h4><span class="stamp">Self-reported · just now</span></div>
+          <p class="help">This helps Navvy show you a useful next step. It won't affect your application.</p>
+          <div class="opts">
+            <button class="opt"><span class="dot"></span>I submitted it</button>
+            <button class="opt"><span class="dot"></span>I started but haven't submitted</button>
+            <button class="opt"><span class="dot"></span>I haven't started</button>
+            <button class="opt sel"><span class="dot"></span>I heard back</button>
+            <button class="opt"><span class="dot"></span>I'm not applying right now</button>
+          </div>
+
+          <div class="branch">
+            <p class="bq">How did it go?</p>
+            <div class="branchbtns">
+              <button class="bbtn approved"><svg class="ic" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0E7A4E" stroke-width="2"></circle><path d="M9 12l2 2 4-4" stroke="#0E7A4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>I was approved</button>
+              <button class="bbtn sel"><svg class="ic" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#FF5A5F" stroke-width="2"></circle><path d="M12 8v5" stroke="#FF5A5F" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="16.3" r="1" fill="#FF5A5F"></circle></svg>I was denied</button>
+              <button class="bbtn"><svg class="ic" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="#7A8093" stroke-width="2"></rect><path d="M8 10h8M8 14h5" stroke="#7A8093" stroke-width="2" stroke-linecap="round"></path></svg>They asked for more documents</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="support">
+          <h4>A denial often isn't final.</h4>
+          <p class="lead">Many are just a missing document or signature — usually fixable.</p>
+          <div class="echeck">
+            <div class="eci"><span class="num">1</span><span class="lab">Read the notice for the reason.</span></div>
+            <div class="eci"><span class="num">2</span><span class="lab">Send the missing documents, <span>or call your local office.</span></span></div>
+            <div class="eci"><span class="num">3</span><span class="lab">If the decision seems wrong, ask for a review. <span>The notice explains how.</span></span></div>
+            <div class="eci"><span class="num">4</span><span class="lab">Still stuck? Get help. <span>Reach us at help@studentbasicneeds.com.</span></span></div>
+          </div>
+          <div class="reason">
+            <p class="rl">Do you know why?</p>
+            <p class="ro">Optional — this helps us improve support for students like you.</p>
+            <div class="chips">
+              <button class="chip sel">Missing documents</button>
+              <button class="chip">Missed an interview or follow-up</button>
+              <button class="chip">Income or eligibility issue</button>
+              <button class="chip">Other / not sure</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="selfnote"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke-width="2"></circle><path d="M12 11v5" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="7.7" r="1" fill="#7A8093" stroke="none"></circle></svg><p><b>This is self-reported.</b> Navvy can't see the state portal — we use your answer only to show you a helpful next step.</p></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- RIGHT: text message reply-with-# -->
+  <div>
+    <div class="col-cap"><p class="ce">Option B</p><p class="ct">By text message</p><p class="cs">A check-in over SMS — the student replies with a number.</p></div>
+    <div class="phone"><div class="device">
+      <div class="sms">
+        <div class="smsbar"><span class="av"><svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,18 78,40 22,40" fill="#fff"></polygon><polygon points="50,46 84,68 16,68" fill="#fff"></polygon><polygon points="50,74 90,96 10,96" fill="#fff"></polygon></svg></span><div><div class="who">Navvy</div><div class="num">(555) 010-2048</div></div></div>
+        <div class="thread">
+          <div class="smstime">Today 9:14 AM</div>
+          <div class="bub in">Hi Niko — it's Navvy. How's your SNAP application going? Reply with a number:
+            <ul class="opt-list"><li><b>1</b> I submitted it</li><li><b>2</b> Started, not done</li><li><b>3</b> Haven't started</li><li><b>4</b> I heard back</li><li><b>5</b> Not applying right now</li></ul>
+          </div>
+          <div class="bub out">4</div>
+          <div class="bub in">Got it. How did it go? Reply:
+            <ul class="opt-list"><li><b>1</b> Approved</li><li><b>2</b> Denied</li><li><b>3</b> They asked for more documents</li></ul>
+          </div>
+          <div class="bub out">2</div>
+          <div class="bub in">A denial often isn't final — usually just a missing document, and that's fixable. Check your notice for the reason, then send what's missing or ask for a review. Need help? Reply HELP or call your local office.</div>
+          <div class="bub in">If you know why, reply: <b>1</b> Missing documents · <b>2</b> Missed interview/follow-up · <b>3</b> Income or eligibility issue · <b>4</b> Other/not sure</div>
+          <div class="bub out">1</div>
+          <div class="bub in">Thanks — that helps us support students like you. This is just to guide you; it doesn't change your application.</div>
+        </div>
+      </div>
+    </div></div>
+    <p class="mini" style="text-align:center"><b>"Respond with #"</b> keeps the reply effortless and works on any phone — no app or login needed. Each reply is captured as the same self-report event as Option A.</p>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
