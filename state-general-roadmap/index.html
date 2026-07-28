@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State roadmap — prototypes · SBNC × ideas42</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="roadmap-kit.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="mast">
+    <div class="logo"><svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,18 78,40 22,40" fill="#fff"></polygon><polygon points="50,46 84,68 16,68" fill="#fff"></polygon><polygon points="50,74 90,96 10,96" fill="#fff"></polygon></svg></div>
+    <div><h1>State roadmap</h1><p class="tl">Navvy benefits prototypes · SBNC × ideas42</p></div>
+  </div>
+  <p class="lede">Meeting-ready prototypes for the post-screener roadmap, comms, and self-reported progress loop. Each comes in a <b>mobile</b> and <b>web</b> version, and in <b>single-portal</b> and <b>separate-portals</b> variants. Start with the build reference, then use the prototypes to resolve the decisions below.</p>
+
+  <p class="kicker">Start the meeting here</p>
+  <div class="grid">
+    <a class="card" href="feedback-build-reference.html"><span class="badge2 tool">Paige + Slack feedback</span><h3>Four changes — build reference</h3><p>Recommend-first ordering, self-reported progress, denial recovery and learning, and interview-call readiness. Includes implementation guardrails.</p><span class="go">Open build reference →</span></a>
+  </div>
+
+  <p class="kicker">Roadmap — webpage</p>
+  <div class="grid">
+    <a class="card" href="roadmap-mobile-single.html"><span class="badge2 single">Single portal</span><h3>Mobile · single portal</h3><p>California worked example (BenefitsCal). Layout toggle: vertical or click-through.</p><span class="go">Open →</span></a>
+    <a class="card" href="roadmap-web-single.html"><span class="badge2 single">Single portal</span><h3>Web · single portal</h3><p>Same content in browser chrome. Layout toggle: vertical or click-through.</p><span class="go">Open →</span></a>
+    <a class="card" href="roadmap-mobile-separate.html"><span class="badge2 separate">Separate portals</span><h3>Mobile · separate portals</h3><p>Two programs, recommend-first (SNAP leads, Medicaid also worth applying for).</p><span class="go">Open →</span></a>
+    <a class="card" href="roadmap-web-separate.html"><span class="badge2 separate">Separate portals</span><h3>Web · separate portals</h3><p>Same content in browser chrome, with recommend-first ranking.</p><span class="go">Open →</span></a>
+  </div>
+
+  <p class="kicker">Comms — emails</p>
+  <div class="grid">
+    <a class="card" href="comms-single.html"><span class="badge2 single">Single portal</span><h3>Comms · single portal</h3><p>Four emails for a combined-portal state (California / BenefitsCal). One CTA each.</p><span class="go">Open →</span></a>
+    <a class="card" href="comms-separate.html"><span class="badge2 separate">Separate portals</span><h3>Comms · separate portals</h3><p>Same set, with a recommend-first Email 1 (SNAP leads, Medicaid below).</p><span class="go">Open →</span></a>
+  </div>
+
+  <p class="kicker">Progress</p>
+  <div class="grid">
+    <a class="card" href="self-report.html"><span class="badge2 tool">Both channels</span><h3>Self-report</h3><p>Collecting self-reported progress two ways: an in-roadmap module and a "reply with #" text. Includes the "I heard back" branch.</p><span class="go">Open →</span></a>
+  </div>
+
+  <p class="kicker">Decide in the product meeting</p>
+  <div class="decision-grid">
+    <div class="decision"><p class="status">Decision 1</p><h3>What sets the recommended order?</h3><p>The screens use the SNAP estimate as the example. Confirm the final rule for programs without comparable dollar estimates. Keep every eligible program visible.</p></div>
+    <div class="decision"><p class="status">Decision 2</p><h3>Where should progress be collected?</h3><p>Roadmap, email/SMS, or both. The data model should be shared: capture, persist, link to the student record, and timestamp.</p></div>
+    <div class="decision"><p class="status">Decision 3</p><h3>Can the roadmap render immediately?</h3><p>If the screener moves in-house, show it directly after results. Otherwise, agree how students return without creating another high-friction destination.</p></div>
+    <div class="decision"><p class="status">Decision 4</p><h3>What contact guidance can V1 support?</h3><p>Use the static phone tip now. Add direct device integration or maintained agency numbers only after technical feasibility and ownership are confirmed.</p></div>
+    <div class="decision"><p class="status">Decision 5</p><h3>How will denial patterns be reported?</h3><p>Self-report among respondents only, with nonresponse visible. Agree privacy rules and minimum cell sizes before geography or demographic cuts.</p></div>
+    <div class="decision"><p class="status">Decision 6</p><h3>What is the first testable slice?</h3><p>A practical V1 is recommend-first screens plus one progress check-in. Denial branching and tailored follow-up depend on the shared back end.</p></div>
+  </div>
+
+  <footer>
+    <b>Naming</b> — <code>feedback-build-reference.html</code>, <code>roadmap-{mobile|web}-{single|separate}.html</code>, <code>comms-{single|separate}.html</code>, <code>self-report.html</code>.<br>
+    <b>Shared</b> — <code>roadmap-kit.css</code> (design system) and <code>roadmap-toggle.js</code> (layout toggle).<br>
+    Single = one combined portal (e.g. California / BenefitsCal). Separate = two programs, two applications → recommend-first. Prototypes, not production.
+  </footer>
+</div>
+</body>
+</html>

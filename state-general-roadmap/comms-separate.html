@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comms — separate portals · SBNC × ideas42</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2658;--coral:#FF5A5F;--coral-dark:#E84A4F;--green:#0E7A4E;--green-soft:#E1F5EE;
+  --cream:#F8F8F4;--gray:#7A8093;--line:#E3E5EC;--tile:#F4F5F7;--coral-soft:#FFEDEE;--bar:#0B0E23;
+  --warn-bg:#FFF8E6;--warn-line:#EAD9A8;--warn-ink:#8A6D17;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--navy);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased;}
+a{color:var(--coral);}a:hover{color:var(--coral-dark);}
+
+.chrome{background:var(--navy);color:#fff;padding:10px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:4px solid var(--coral);font-size:12.5px;}
+.chrome .pyr{width:24px;height:24px;flex-shrink:0;}
+.chrome b{font-family:'Archivo Black','Poppins',sans-serif;letter-spacing:0.3px;font-weight:400;}
+.chrome .ex{margin-left:auto;background:var(--coral);color:#fff;font-weight:700;padding:3px 12px;border-radius:999px;font-size:11px;letter-spacing:0.6px;text-transform:uppercase;}
+.stage{max-width:760px;margin:0 auto;padding:28px 24px 64px;}
+.framecap{font-size:12.5px;color:var(--gray);font-style:italic;margin:0 auto 26px;line-height:1.6;max-width:66ch;text-align:left;}
+.framecap b{color:var(--navy);font-style:normal;}
+
+.sec-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--coral);margin:0 0 5px;}
+.sec-title{font-size:22px;font-weight:800;letter-spacing:-0.4px;color:var(--navy);margin:0 0 4px;line-height:1.15;}
+.sec-sub{font-size:13.5px;color:var(--gray);margin:0 0 20px;line-height:1.55;max-width:60ch;}
+
+/* email client card */
+.mail{max-width:520px;margin:0 auto 40px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 14px 40px rgba(27,33,80,0.12);}
+.mail-bar{background:#F1F2F6;border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;gap:7px;}
+.mail-bar i{width:10px;height:10px;border-radius:50%;background:#CfD3DE;}
+.mail-bar .tab{margin-left:10px;font-size:12px;color:var(--gray);font-weight:600;}
+.mail-subject{padding:18px 22px 14px;border-bottom:1px solid var(--line);}
+.mail-subject h2{font-size:19px;font-weight:800;letter-spacing:-0.3px;margin:0;line-height:1.25;color:var(--navy);}
+.mail-meta{display:flex;align-items:center;gap:12px;padding:14px 22px;border-bottom:1px solid var(--line);}
+.sender-badge{width:40px;height:40px;border-radius:11px;background:var(--coral);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(255,90,95,0.4);}
+.sender-badge span{font-family:'Archivo Black',sans-serif;color:#fff;font-size:17px;line-height:1;}
+.sender .nm{font-size:14px;font-weight:700;color:var(--navy);line-height:1.2;}
+.sender .em{font-size:12px;color:var(--gray);}
+.sender .to{font-size:12px;color:var(--gray);margin-top:2px;}
+.mail-body{padding:24px 22px 26px;}
+.mail-body p{font-size:14.5px;color:var(--navy);margin:0 0 14px;line-height:1.6;}
+.mail-body .greet{font-weight:600;}
+.ebig{font-family:'Archivo Black',sans-serif;color:var(--green);font-size:30px;letter-spacing:-1px;line-height:1.05;margin:2px 0 6px;}
+.ebig .per{font-size:16px;}
+.ecav{font-size:12.5px;color:var(--gray);margin:0 0 4px;line-height:1.55;}
+.preheader{font-size:12px;color:var(--gray);margin:7px 0 0;line-height:1.4;}
+.enext{font-size:14.5px;color:var(--navy);font-weight:700;margin:16px 0 4px;line-height:1.5;}
+.echeck{display:flex;flex-direction:column;gap:12px;margin:14px 0 22px;}
+.eci{display:flex;gap:12px;align-items:center;}
+.eci .box{width:23px;height:23px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.eci.done .box{background:var(--green);}
+.eci.done .box svg{width:13px;height:13px;}
+.eci.todo .box{background:#fff;border:1.5px solid #C9CDDA;}
+.eci .lab{font-size:14px;color:var(--navy);font-weight:600;line-height:1.4;}
+.eci.done .lab{color:var(--gray);}
+.esrc{font-size:13px;color:var(--gray);margin:16px 0 0;line-height:1.6;}
+.esign{font-size:14px;font-weight:700;color:var(--navy);margin:18px 0 0;}
+.efine{font-size:12px;color:var(--gray);font-style:italic;margin:26px 0 0;line-height:1.55;}
+/* value callout */
+.ecallout{display:block;background:#2E8B62;color:#fff;border-radius:12px;padding:26px 24px;margin:2px 0 18px;}
+.ecallout .cchk{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:var(--green);display:flex;align-items:center;justify-content:center;}
+.ecallout .cchk svg{width:20px;height:20px;}
+.ecallout .cg{font-size:11px;font-weight:800;margin:0 0 12px;color:#7FE6AE;letter-spacing:1px;text-transform:uppercase;}
+.ecallout .chead{font-family:'Poppins',sans-serif;font-weight:800;font-size:23px;letter-spacing:-0.6px;line-height:1.12;margin:0 0 8px;}
+.ecallout .chead .amt{color:#7FE6AE;}
+.ecallout .cfor{font-size:13px;margin:0;color:#ffffffd9;line-height:1.55;}
+/* roadmap */
+.reyebrow{font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:var(--coral);margin:22px 0 16px;}
+.rmap{display:flex;flex-direction:column;}
+.rstep{display:flex;gap:15px;}
+.rrail{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:38px;}
+.rnode{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;}
+.rnode.done{background:var(--green);color:#fff;}
+.rnode.done svg{width:18px;height:18px;}
+.rnode.here{background:var(--coral);color:#fff;box-shadow:0 0 0 5px var(--coral-soft);}
+.rnode.todo{background:#EDEFF3;color:#AEB3C0;}
+.rline{width:2px;flex:1;min-height:22px;background:var(--line);margin:7px 0;}
+.rbody{flex:1;padding-bottom:24px;}
+.rstep:last-child .rbody{padding-bottom:0;}
+.rlab{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:0.9px;text-transform:uppercase;padding:6px 15px;border-radius:999px;margin:3px 0 10px;}
+.rlab.done{background:var(--green-soft);color:var(--green);}
+.rlab.here{background:var(--coral);color:#fff;}
+.rlab.heads{background:var(--coral-soft);color:var(--coral);}
+.rttl{font-size:17px;font-weight:800;color:var(--navy);margin:0 0 4px;letter-spacing:-0.2px;line-height:1.25;}
+.rdsc{font-size:13.5px;color:var(--gray);margin:0;line-height:1.5;}
+.rstep.here .rbody{background:var(--coral-soft);border-radius:16px;padding:16px 18px 18px;margin:0 0 24px;}
+.rbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--coral);color:#fff;font-family:'Poppins',sans-serif;font-weight:800;font-size:15px;text-decoration:none;border-radius:12px;padding:15px;margin:14px 0 13px;box-shadow:0 8px 20px rgba(255,90,95,0.28);}
+.rlegit{display:flex;gap:9px;align-items:flex-start;}
+.rlegit svg{width:17px;height:17px;flex-shrink:0;margin-top:1px;stroke:var(--coral);}
+.rlegit p{font-size:12.5px;color:var(--gray);margin:0;line-height:1.5;}
+.rlegit b{color:var(--navy);font-weight:800;}
+.ebtn{display:block;width:100%;background:var(--coral);color:#fff;text-align:center;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;border-radius:12px;padding:15px;box-shadow:0 8px 20px rgba(255,90,95,0.3);margin:0 0 8px;}
+.elegit{display:flex;gap:9px;align-items:center;background:var(--tile);border-radius:11px;padding:12px 14px;margin:14px 0 20px;}
+.elegit svg{width:17px;height:17px;flex-shrink:0;stroke:var(--green);}
+.elegit p{font-size:12.5px;color:var(--navy);margin:0;line-height:1.5;}
+.emini{border-top:1px solid var(--line);margin:6px 0 0;padding:16px 0 0;}
+.emini .lbl{font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--gray);margin:0 0 12px;}
+.emini .er{display:flex;gap:11px;align-items:flex-start;margin:0 0 11px;}
+.emini .en{width:22px;height:22px;border-radius:50%;background:var(--coral-soft);color:var(--coral);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.emini .et{font-size:13px;color:var(--navy);margin:0;line-height:1.4;font-weight:600;}
+.emini .et span{color:var(--gray);font-weight:400;}
+.mail-foot{background:#FAFAFB;border-top:1px solid var(--line);padding:16px 22px;font-size:11px;color:var(--gray);line-height:1.55;}
+.mail-foot a{color:var(--gray);text-decoration:underline;}
+
+/* sequence timeline */
+.seq{background:#fff;border:1px solid var(--line);border-radius:18px;padding:8px 22px;box-shadow:0 2px 6px rgba(27,33,80,0.04);}
+.send{display:flex;gap:16px;padding:22px 0;border-top:1px solid var(--line);}
+.send:first-child{border-top:none;}
+.send .when{width:78px;flex-shrink:0;text-align:right;}
+.send .when .day{font-family:'Archivo Black',sans-serif;font-size:15px;color:var(--navy);letter-spacing:-0.3px;line-height:1;}
+.send .when .rel{font-size:11.5px;color:var(--gray);margin-top:3px;line-height:1.3;}
+.send .mid{width:2px;background:var(--line);flex-shrink:0;position:relative;}
+.send .mid::before{content:"";position:absolute;left:50%;top:2px;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:var(--coral);border:2px solid #fff;box-shadow:0 0 0 1px var(--line);}
+.send:first-child .mid::before{background:var(--coral);}
+.send:not(:first-child) .mid::before{background:#fff;border:2px solid var(--coral);}
+.send .content{flex:1;padding-top:1px;}
+.send h4{font-size:15.5px;font-weight:800;color:var(--navy);margin:0 0 3px;letter-spacing:-0.2px;}
+.send .subj{font-size:13px;color:var(--navy);margin:0 0 8px;line-height:1.45;}
+.send .subj em{font-style:normal;color:var(--gray);}
+.send .desc{font-size:12.5px;color:var(--gray);margin:0 0 12px;line-height:1.55;}
+.tags{display:flex;flex-wrap:wrap;gap:7px;}
+.mtag{font-size:10.5px;font-weight:700;letter-spacing:0.3px;padding:4px 10px;border-radius:999px;}
+.mtag.seg{background:var(--navy);color:#fff;}
+.mtag.mech{background:var(--green-soft);color:var(--green);}
+.mtag.stage{background:var(--coral-soft);color:var(--coral);}
+
+/* premium panel */
+.premium{background:#fff;border:1.5px dashed var(--line);border-radius:16px;padding:20px 22px;margin:26px 0 0;}
+.premium .pl{display:inline-flex;align-items:center;gap:7px;background:var(--tile);color:var(--gray);font-size:10.5px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin:0 0 12px;}
+.premium h4{font-size:16px;font-weight:800;color:var(--navy);margin:0 0 6px;}
+.premium p{font-size:13px;color:var(--gray);margin:0;line-height:1.6;}
+.premium p b{color:var(--navy);}
+
+/* review chips */
+.reviewchip{display:flex;align-items:flex-start;gap:8px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);border-radius:11px;font-size:12px;font-weight:600;padding:11px 14px;margin:14px 0 0;line-height:1.5;}
+.reviewchip b{font-weight:800;}
+.chip-lead{font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin:34px 0 4px;}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.92em;background:rgba(30,38,88,0.06);border-radius:4px;padding:1px 5px;}
+
+.mail-subject h2{font-size:17px}
+.mail-body p{font-size:13.5px}
+.eci .lab{font-size:13px}
+.eci{align-items:flex-start}
+.eci .box{margin-top:1px}
+.echeck{gap:14px;background:var(--tile);border-radius:14px;padding:18px 18px;margin:14px 0 18px}
+.ecallout .chead{font-size:20px}
+.ecallout .cfor{font-size:13px}
+.rdsc{font-size:13px}
+.rttl{font-size:16px}
+.ebtn{font-size:15px}
+.mail{max-width:500px}
+.sec-eyebrow{margin-top:8px}
+.sendmeta{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px}.sendmeta span{font-size:10.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;border-radius:999px;padding:4px 12px}.sendmeta .tday{background:var(--navy);color:#fff}.sendmeta .ttrig{background:var(--coral-soft);color:var(--coral-dark)}
+.ecallout .chead{font-size:23px;line-height:1.2;margin:0 0 10px;letter-spacing:-.4px}.mail-body{padding:24px 24px 26px}.mail-body p{margin:0 0 12px}.reyebrow{margin:14px 0 10px}.rbody{padding-bottom:14px}.rstep.here .rbody{background:none;border-radius:0;padding:0 0 14px;margin:0}.rbtn{padding:12px;margin:10px 0 10px}.rnode{width:32px;height:32px;font-size:13px}.rrail{width:32px}.rline{margin:5px 0;min-height:12px}.rttl{font-size:15px;margin:0 0 2px}.rlab{padding:4px 12px;margin:2px 0 7px}.esrc{margin:10px 0 0;font-size:12px}.esign{margin:12px 0 0}
+.edocs{background:#fff;border:1px solid var(--line);border-radius:14px;padding:2px 18px;margin:14px 0 18px;box-shadow:0 2px 8px rgba(27,33,80,.05)}.docrow{display:flex;gap:14px;align-items:center;padding:15px 2px;border-top:1px solid var(--line)}.docrow:first-child{border-top:none}.docrow .dico{width:40px;height:40px;border-radius:12px;flex-shrink:0;background:#EDF0F7;display:flex;align-items:center;justify-content:center}.docrow .dico svg{width:19px;height:19px;stroke:#3E4A72}.docrow .dt{font-size:13.5px;font-weight:700;color:var(--navy);margin:0;line-height:1.25}.docrow .dd{font-size:12px;color:var(--gray);margin:2px 0 0;line-height:1.4}
+.docrow.student .dico{background:var(--coral-soft)}.docrow.student .dico svg{stroke:var(--coral)}.docrow .spill{margin-left:auto;flex-shrink:0;background:var(--coral-soft);color:var(--coral);font-size:9.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:4px 9px;border-radius:999px}
+.nextstep{border-left:4px solid var(--coral);padding:2px 0 2px 16px;margin:20px 0 16px}.ns-kicker{display:block;font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--coral);margin:0 0 4px}.ns-title{font-size:19px;font-weight:800;letter-spacing:-.3px;color:var(--navy);margin:0;line-height:1.25}.ns-cav{font-size:12px;color:var(--gray);margin:2px 0 14px;line-height:1.5}
+.elegit{align-items:center}.elegit svg{margin-top:0;align-self:center}.edocs-label{font-size:13px;font-weight:700;color:var(--navy);margin:16px 0 8px}
+.eligibility-callout{background:var(--green);border-radius:14px;color:#fff;padding:26px 24px 24px;margin:2px 0 20px}.eligibility-callout__eyebrow{color:#7FE6AE;display:block;font-size:11px;font-weight:800;letter-spacing:1.2px;margin-bottom:10px;text-transform:uppercase}.eligibility-callout__heading{color:#fff;font-family:'Poppins',sans-serif;font-weight:800;font-size:23px;letter-spacing:-0.5px;line-height:1.22;margin:0 0 10px}.eligibility-callout__amount{color:#7FE6AE;font-style:normal;white-space:nowrap}.eligibility-callout__supporting-text{color:rgba(255,255,255,0.88);font-size:13px;line-height:1.55;margin:0}
+.elegit.tip{background:#FFF9EC;border:1px solid #F0E3C0;border-radius:11px;gap:11px;margin-bottom:14px}.elegit.tip .tipico{width:30px;height:30px;border-radius:9px;background:#FBEECB;display:flex;align-items:center;justify-content:center;flex-shrink:0}.elegit.tip .tipico svg{width:16px;height:16px;stroke:#B8860B;margin:0}.elegit.tip p{color:var(--navy)}
+.ebtn:hover{background:var(--coral-dark);color:#fff}
+.edocs-label{font-size:11px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--gray);margin:18px 0 8px}
+.echeck .num{width:24px;height:24px;border-radius:50%;background:var(--coral);color:#fff;font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ereassure{font-size:13px;color:var(--gray);font-style:italic;margin:14px 0 12px;line-height:1.6}
+.enext{margin:0 0 4px}
+.rec-also-lbl{font-size:11px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--gray);margin:18px 0 10px}.rec-also{border:1px solid var(--line);border-radius:14px;padding:15px 16px 13px;background:var(--tile)}.rec-also .an{font-size:14.5px;font-weight:800;color:var(--navy);margin:0 0 2px}.rec-also .ad{font-size:12.5px;color:var(--gray);margin:0 0 12px;line-height:1.5}.sbtn{display:block;width:100%;text-align:center;background:#fff;color:var(--coral);text-decoration:none;font-family:'Poppins',sans-serif;font-weight:800;font-size:14.5px;border:1.5px solid var(--coral);border-radius:12px;padding:12px}.sbtn:hover{background:var(--coral-soft);color:var(--coral)}.progpick{display:flex;flex-direction:column;gap:10px;margin:4px 0 0}.ppick{border:1px solid var(--line);border-radius:14px;padding:15px 16px;background:#fff}.ppick.primary{border:1.5px solid var(--coral);background:var(--coral-soft)}.pp-top{display:flex;gap:14px;align-items:center;margin:0 0 12px}.pp-amt{flex-shrink:0;min-width:70px;text-align:center;font-family:'Archivo Black',sans-serif;color:var(--green);font-size:23px;letter-spacing:-1px;line-height:1}.pp-amt span{display:block;font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:0;color:var(--gray);margin-top:4px}.pp-amt.none{color:var(--navy);font-family:'Poppins',sans-serif;font-weight:800;font-size:13px;letter-spacing:-.2px;line-height:1.3}.pp-body{flex:1}.pp-rank{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--coral);margin:0 0 4px}.ppick:not(.primary) .pp-rank{color:var(--gray)}.pp-name{font-size:15px;font-weight:800;color:var(--navy);margin:0 0 2px;letter-spacing:-.2px}.pp-desc{font-size:12.5px;color:var(--gray);margin:0;line-height:1.45}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#0B0E23">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0B0E23"></rect>
+    <rect x="330" y="150" width="540" height="500" rx="24" fill="#ffffff"></rect>
+    <rect x="370" y="200" width="90" height="90" rx="18" fill="#FF5A5F"></rect>
+    <rect x="480" y="220" width="330" height="26" rx="8" fill="#1E2658"></rect>
+    <rect x="370" y="330" width="440" height="40" rx="8" fill="#0E7A4E"></rect>
+    <rect x="370" y="430" width="460" height="70" rx="14" fill="#FF5A5F"></rect>
+  </svg>
+</template>
+<div class="chrome"><svg class="pyr" viewBox="0 0 100 100" aria-label="SBNC"><polygon points="50,18 78,40 22,40" fill="#FF5A5F"></polygon><polygon points="50,46 84,68 16,68" fill="#FF5A5F"></polygon><polygon points="50,74 90,96 10,96" fill="#FF5A5F"></polygon></svg><span><b>SBNC × ideas42</b> · Comms — separate-portal state</span></div>
+<div class="stage">
+<p class="framecap"><b>Comms — separate-portal state (Tennessee).</b> Email 1 is <b>recommend-first</b> — SNAP leads on its estimate, Medicaid stays visible below. <b>Meeting decision:</b> confirm the ranking rule. Email 4 asks for a self-reported update.</p>
+
+<p class="sec-eyebrow">Email 1</p>
+<p class="sec-title">Your result &amp; next step</p>
+<div class="sendmeta"><span class="tday">Day 0</span><span class="ttrig">Trigger: screener completed</span></div>
+<div class="mail" data-screen-label="Email 1 — Result">
+<div class="mail-bar"><i></i><i></i><i></i><span class="tab">Inbox</span></div>
+<div class="mail-subject"><h2>Great news, Niko — about $291/month for food, plus health coverage</h2><p class="preheader">Your next step and what to expect.</p></div>
+<div class="mail-meta"><div class="sender-badge"><svg viewBox="0 0 100 100" aria-hidden="true" style="width:22px;height:22px;"><polygon points="50,18 78,40 22,40" fill="#fff"></polygon><polygon points="50,46 84,68 16,68" fill="#fff"></polygon><polygon points="50,74 90,96 10,96" fill="#fff"></polygon></svg></div><div class="sender"><div class="nm">Navvy · Student Basic Needs Coalition</div><div class="em">hello@navvyai.com</div><div class="to">to niko@student.edu</div></div></div>
+<div class="mail-body">
+<section class="eligibility-callout" aria-labelledby="eligibility-result-title"><span class="eligibility-callout__eyebrow">Your estimated benefit</span><h2 class="eligibility-callout__heading" id="eligibility-result-title">You may qualify for about <em class="eligibility-callout__amount">$291/month</em> toward groceries — plus health coverage.</h2><p class="eligibility-callout__supporting-text" style="color:#ffffff">Based on your screener, you likely qualify for two programs to help with groceries and healthcare costs. Here's where we suggest starting.</p></section>
+<p class="rec-also-lbl">Recommended order</p>
+<div class="progpick">
+<div class="ppick primary"><div class="pp-top"><div class="pp-amt">$291<span>/mo</span></div><div class="pp-body"><span class="pp-rank">We suggest starting here</span><p class="pp-name">Food benefits (SNAP)</p><p class="pp-desc">Estimated monthly grocery support based on your screener.</p></div></div><a class="ebtn" href="#">Start my SNAP application (One DHS) →</a></div>
+<div class="ppick"><div class="pp-top"><div class="pp-amt none">Health<span>coverage</span></div><div class="pp-body"><span class="pp-rank">Also worth applying for</span><p class="pp-name">TennCare (Medicaid)</p><p class="pp-desc">Low- or no-cost health coverage through TennCare Connect. It's coverage, not cash, so there's no dollar estimate.</p></div></div><a class="sbtn" href="#">Start my TennCare application →</a></div>
+</div>
+<p class="ereassure">Apply for both — applying for one doesn't affect the other.</p>
+<p class="esign">— The Student Basic Needs Coalition</p>
+</div>
+<div class="mail-foot">You're getting this because you completed our benefits eligibility screener. This is not an approval — your final amount is determined by the state.<br><br>You can <a href="#">unsubscribe</a> anytime. Questions? <a href="mailto:help@studentbasicneeds.com">help@studentbasicneeds.com</a></div>
+</div>
+
+<p class="sec-eyebrow">Email 2</p>
+<p class="sec-title">Document gathering support</p>
+<div class="sendmeta"><span class="tday">Day 7</span><span class="ttrig">Trigger: time elapsed — sends whether or not they clicked</span></div>
+<div class="mail" data-screen-label="Email 2 — Documents">
+<div class="mail-bar"><i></i><i></i><i></i><span class="tab">Inbox</span></div>
+<div class="mail-subject"><h2>Have all you need to apply? Here's a checklist.</h2><p class="preheader">Gather your documents so you're prepared</p></div>
+<div class="mail-meta"><div class="sender-badge"><svg viewBox="0 0 100 100" aria-hidden="true" style="width:22px;height:22px;"><polygon points="50,18 78,40 22,40" fill="#fff"></polygon><polygon points="50,46 84,68 16,68" fill="#fff"></polygon><polygon points="50,74 90,96 10,96" fill="#fff"></polygon></svg></div><div class="sender"><div class="nm">Navvy · Student Basic Needs Coalition</div><div class="em">hello@navvyai.com</div><div class="to">to niko@student.edu</div></div></div>
+<div class="mail-body">
+<p class="greet">Hi Niko,</p>
+<p>While different programs might require different documents, most of them ask for these in some form:</p>
+<div class="edocs">
+<div class="docrow"><div class="dico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke-width="2"></rect><circle cx="8.5" cy="11" r="2.2" stroke-width="2"></circle><path d="M13.5 10h4.5M13.5 13.5h3" stroke-width="2" stroke-linecap="round"></path></svg></div><div><p class="dt">Photo ID</p><p class="dd">A photo on your phone works.</p></div></div>
+<div class="docrow"><div class="dico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke-width="2"></circle><path d="M12 7.5v9M9.7 14.2c0 1.1 1 1.7 2.3 1.7s2.3-.5 2.3-1.6c0-2.4-4.4-1.3-4.4-3.6 0-1 1-1.6 2.1-1.6s2.1.6 2.1 1.5" stroke-width="1.7" stroke-linecap="round"></path></svg></div><div><p class="dt">Proof of income</p><p class="dd">A pay stub or financial aid award letter.</p></div></div>
+<div class="docrow"><div class="dico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6 8 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6 10v8h12v-8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><p class="dt">Proof of where you live</p><p class="dd">A lease, bill, or mail with your address.</p></div></div>
+</div>
+<div class="elegit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-width="2"></circle><path d="M12 11v5" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="7.7" r="1.1" fill="currentColor" stroke="none"></circle></svg><p>You can still start even if you don't have everything — you can add documents after you submit.</p></div>
+<p class="edocs-label">Additional documents you may need:</p>
+<div class="edocs">
+<div class="docrow"><div class="dico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="12" rx="2" stroke-width="2"></rect><path d="M8 11h8M8 14h5" stroke-width="2" stroke-linecap="round"></path></svg></div><div><p class="dt">Social Security number</p><p class="dd">For you, and anyone you live with who's applying.</p></div></div>
+<div class="docrow student"><div class="dico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4L2 9l10 5 10-5-10-5Z" stroke-width="2" stroke-linejoin="round"></path><path d="M6 11v4c0 1.5 2.7 3 6 3s6-1.5 6-3v-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><p class="dt">Proof you're a student</p><p class="dd">Enrollment verification, or a work-study or aid letter from your financial aid office.</p></div><span class="spill">For students</span></div>
+</div>
+<a class="ebtn" href="#">Visit your state's benefits site →</a>
+<p class="efine">Already applied? Keep these documents close anyway — your state may ask for them as additional documentation.</p>
+<p class="esign">— The Student Basic Needs Coalition</p>
+</div>
+<div class="mail-foot">You're getting this because you completed our benefits eligibility screener.<br><br>You can <a href="#">unsubscribe</a> anytime.</div>
+</div>
+
+<p class="sec-eyebrow">Email 3</p>
+<p class="sec-title">What to expect after applying</p>
+<div class="sendmeta"><span class="tday">Day 14</span><span class="ttrig">Trigger: time elapsed — works applied or not</span></div>
+<div class="mail" data-screen-label="Email 3 — After applying">
+<div class="mail-bar"><i></i><i></i><i></i><span class="tab">Inbox</span></div>
+<div class="mail-subject"><h2>What to expect after you apply</h2><p class="preheader">Your county takes it from here — here's what to watch for.</p></div>
+<div class="mail-meta"><div class="sender-badge"><svg viewBox="0 0 100 100" aria-hidden="true" style="width:22px;height:22px;"><polygon points="50,18 78,40 22,40" fill="#fff"></polygon><polygon points="50,46 84,68 16,68" fill="#fff"></polygon><polygon points="50,74 90,96 10,96" fill="#fff"></polygon></svg></div><div class="sender"><div class="nm">Navvy · Student Basic Needs Coalition</div><div class="em">hello@navvyai.com</div><div class="to">to niko@student.edu</div></div></div>
+<div class="mail-body">
+<p class="greet">Hi Niko,</p>
+<p>Once you apply, your state reviews it and contacts you if they need more.<br><br><b>Three things you can do now:</b></p>
+<div class="echeck">
+<div class="eci"><span class="num">1</span><span class="lab">Save your confirmation number or take a screenshot.</span></div>
+<div class="eci"><span class="num">2</span><span class="lab">Check your state's benefits site and any emails, mail and voicemails from unknown numbers.</span></div>
+<div class="eci"><span class="num">3</span><span class="lab">Respond to any county requests by the deadline they give you — missing it can delay your application.</span></div>
+</div>
+<p class="ereassure">It's common to get asked to upload more documents or attend an interview — this doesn't mean you've done anything wrong.</p>
+<div class="elegit tip"><span class="tipico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 4h3l2 5-2 1.5c1.2 2.2 2.9 3.9 5.1 5.1L16.5 13l5 2v3c0 1.1-.9 2-2 2C11 20 4 13 4 4.5 4 4.2 4.2 4 4.5 4H7Z" stroke-width="2" stroke-linejoin="round"/></svg></span><p>Save your agency's number: <b>{{agency_name}} · {{agency_phone}}</b>. Still answer unknown numbers and check voicemail — calls may come from a different one.</p></div>
+<p class="enext">Watch each portal and your messages for next steps and deadlines.</p>
+<div class="elegit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Navvy can't see your application status. For updates, use your state's benefits site or contact your local office directly.</p></div>
+<a class="ebtn" href="#">Go to my state's benefits site →</a>
+<p class="esign">— The Student Basic Needs Coalition</p>
+</div>
+<div class="mail-foot">You're getting this because you completed our benefits eligibility screener. You can <a href="#">unsubscribe</a> anytime.</div>
+</div>
+
+<p class="sec-eyebrow">Email 4</p>
+<p class="sec-title">Progress check-in</p>
+<div class="sendmeta"><span class="tday">Day 30</span><span class="ttrig">Trigger: time elapsed — asks for self-reported stage</span></div>
+<div class="mail" data-screen-label="Email 4 — Progress check-in">
+<div class="mail-bar"><i></i><i></i><i></i><span class="tab">Inbox</span></div>
+<div class="mail-subject"><h2>Quick check-in: where are you with your application?</h2><p class="preheader">Your answer helps us show a useful next step.</p></div>
+<div class="mail-meta"><div class="sender-badge"><svg viewBox="0 0 100 100" aria-hidden="true" style="width:22px;height:22px;"><polygon points="50,18 78,40 22,40" fill="#fff"></polygon><polygon points="50,46 84,68 16,68" fill="#fff"></polygon><polygon points="50,74 90,96 10,96" fill="#fff"></polygon></svg></div><div class="sender"><div class="nm">Navvy · Student Basic Needs Coalition</div><div class="em">hello@navvyai.com</div><div class="to">to niko@student.edu</div></div></div>
+<div class="mail-body">
+<p class="greet">Hi Niko,</p>
+<p>We can't see what happens in the state portals, so we're checking in. Your answer helps us show the most relevant next step.</p>
+<div class="nextstep">
+<span class="ns-kicker">One quick question</span>
+<h3 class="ns-title">Where are you with your applications?</h3>
+</div>
+<a class="ebtn" href="#">Update my progress →</a>
+<div class="elegit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-width="2"></circle><path d="M12 11v5" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="7.7" r="1.1" fill="currentColor" stroke="none"></circle></svg><p><b>This is self-reported.</b> Your answer doesn't change either application and is not a status update from the state.</p></div>
+<p class="efine">The check-in should capture each program separately. If you report a denial or document request, Navvy shows recovery guidance and optionally asks why.</p>
+<p class="esign">— The Student Basic Needs Coalition</p>
+</div>
+<div class="mail-foot">You're getting this because you completed our benefits eligibility screener. You can <a href="#">unsubscribe</a> anytime.</div>
+</div>
+</div>
+</body>
+</html>

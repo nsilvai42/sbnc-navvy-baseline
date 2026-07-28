@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap changes (Paige + Slack feedback) — build reference for Travis · SBNC × ideas42</title>
+<!--
+  ============================================================================
+  WHAT THIS FILE IS  (read me first, Travis)
+  ============================================================================
+  A clean, static visual spec of the FOUR roadmap changes driven by Paige's
+  document comments and the 2026-07-21 Slack follow-up. It is NOT the production app and NOT the React
+  prototype bundle — it is a translation reference: the intended UI, the copy,
+  and the logic/data behind each change, in readable HTML/CSS you can lift into
+  the real Navvy build.
+
+  Every change carries an inline "BUILD NOTE" comment with:
+    · the trigger/logic,
+    · the dynamic data fields (shown as {{field}} placeholders),
+    · the guardrail it must not violate.
+
+  The four changes:
+    1. "Choose your benefits" → recommend-first, value-ranked (ORDER ONLY,
+       with the final ranking rule to confirm in the product meeting).
+    2. Self-report promoted to a standing "Update your progress" module.
+    3. "I heard back" branch → Approved / Denied / Asked for more docs,
+       with a fixable-denial support box + optional self-reported reason.
+    4. Interview-call readiness → save a verified agency number when one is
+       available, while warning that calls may still use local/unknown numbers.
+
+  KEYSTONE DEPENDENCY (applies to Changes 2 & 3): both need the same back-end —
+  capture the self-reported answer as an event, persist it, link it to the
+  student record, and make it reportable. Changes 1 and 4 are front-end /
+  configuration work only.
+  All dollar amounts, program names, and portal names below are PLACEHOLDER
+  values standing in for dynamic data fields.
+  ============================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Tokens — identical to the current comms.html / roadmap design system */
+:root{
+  --navy:#1E2658;--coral:#FF5A5F;--coral-dark:#E84A4F;--green:#0E7A4E;--green-soft:#E1F5EE;
+  --cream:#F8F8F4;--gray:#7A8093;--line:#E3E5EC;--tile:#F4F5F7;--coral-soft:#FFEDEE;--bar:#0B0E23;
+  --warn-bg:#FFF8E6;--warn-line:#EAD9A8;--warn-ink:#8A6D17;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--navy);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased;}
+a{color:var(--coral);}a:hover{color:var(--coral-dark);}
+
+.chrome{background:var(--navy);color:#fff;padding:10px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:4px solid var(--coral);font-size:12.5px;}
+.chrome .pyr{width:24px;height:24px;flex-shrink:0;}
+.chrome b{font-family:'Archivo Black','Poppins',sans-serif;letter-spacing:0.3px;font-weight:400;}
+.chrome .ex{margin-left:auto;background:var(--coral);color:#fff;font-weight:700;padding:3px 12px;border-radius:999px;font-size:11px;letter-spacing:0.6px;text-transform:uppercase;}
+
+.stage{max-width:900px;margin:0 auto;padding:30px 24px 72px;}
+.framecap{font-size:12.5px;color:var(--gray);font-style:italic;margin:0 auto 34px;line-height:1.6;max-width:66ch;text-align:left;}
+.framecap b{color:var(--navy);font-style:normal;}
+
+/* screen caption */
+.cap{max-width:440px;margin:0 auto;}
+.cap-eyebrow{font-size:11.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--coral);margin:0 0 5px;}
+.cap-title{font-size:21px;font-weight:800;letter-spacing:-0.4px;color:var(--navy);margin:0 0 4px;line-height:1.18;}
+.cap-sub{font-size:13px;color:var(--gray);margin:0 0 16px;line-height:1.55;}
+.change-divider{max-width:440px;margin:56px auto 0;border:none;border-top:1px solid var(--line);}
+
+/* phone screen card */
+.phone{max-width:440px;margin:0 auto 8px;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 16px 46px rgba(27,33,80,0.13);}
+.phone-bar{background:var(--bar);color:#fff;padding:11px 16px;display:flex;align-items:center;gap:9px;}
+.phone-bar .badge{background:var(--coral);color:#fff;font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:0.4px;padding:4px 9px;border-radius:7px;line-height:1;}
+.phone-bar .tag{font-size:12px;color:#C9CEDE;font-weight:600;}
+.screen{padding:22px 20px 26px;}
+
+/* roadmap step rail (from comms.html .rmap system) */
+.reyebrow{font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--coral);margin:0 0 14px;}
+.rmap{display:flex;flex-direction:column;}
+.rstep{display:flex;gap:14px;}
+.rrail{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:32px;}
+.rnode{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
+.rnode.done{background:var(--green);color:#fff;}
+.rnode.done svg{width:16px;height:16px;}
+.rnode.here{background:var(--coral);color:#fff;box-shadow:0 0 0 5px var(--coral-soft);}
+.rnode.todo{background:#EDEFF3;color:#AEB3C0;}
+.rline{width:2px;flex:1;min-height:16px;background:var(--line);margin:5px 0;}
+.rbody{flex:1;padding-bottom:20px;}
+.rstep:last-child .rbody{padding-bottom:0;}
+.rlab{display:inline-block;font-size:10px;font-weight:800;letter-spacing:0.8px;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin:2px 0 8px;}
+.rlab.done{background:var(--green-soft);color:var(--green);}
+.rlab.here{background:var(--coral);color:#fff;}
+.rttl{font-size:15px;font-weight:800;color:var(--navy);margin:0 0 3px;letter-spacing:-0.2px;line-height:1.25;}
+.rdsc{font-size:13px;color:var(--gray);margin:0;line-height:1.5;}
+
+/* value callout (green) */
+.benefit{background:var(--green);border-radius:14px;color:#fff;padding:20px 20px 18px;margin:0 0 14px;}
+.benefit .eyebrow{color:#7FE6AE;display:block;font-size:10.5px;font-weight:800;letter-spacing:1.1px;margin-bottom:8px;text-transform:uppercase;}
+.benefit h3{color:#fff;font-family:'Poppins',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.5px;line-height:1.2;margin:0 0 6px;}
+.benefit .amt{color:#7FE6AE;font-style:normal;white-space:nowrap;}
+.benefit p{color:rgba(255,255,255,0.9);font-size:12.5px;line-height:1.5;margin:0;}
+
+/* next step block */
+.nextstep{border-left:4px solid var(--coral);padding:2px 0 2px 15px;margin:4px 0 12px;}
+.ns-kicker{display:block;font-size:10.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--coral);margin:0 0 4px;}
+.ns-title{font-size:17px;font-weight:800;letter-spacing:-0.3px;color:var(--navy);margin:0;line-height:1.25;}
+
+/* buttons */
+.ebtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--coral);color:#fff;text-align:center;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:14px;box-shadow:0 8px 20px rgba(255,90,95,0.28);cursor:pointer;margin:0 0 10px;}
+.ebtn:hover{background:var(--coral-dark);}
+.sbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#fff;color:var(--coral);text-align:center;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:800;font-size:14.5px;border:1.5px solid var(--coral);border-radius:12px;padding:12px;cursor:pointer;margin:0 0 4px;}
+.sbtn:hover{background:var(--coral-soft);}
+
+/* recommend-first blocks */
+.rec-also-lbl{font-size:11px;font-weight:800;letter-spacing:0.9px;text-transform:uppercase;color:var(--gray);margin:18px 0 10px;}
+.rec-also{border:1px solid var(--line);border-radius:14px;padding:15px 16px 13px;background:var(--tile);}
+.rec-also .an{font-size:14.5px;font-weight:800;color:var(--navy);margin:0 0 2px;}
+.rec-also .ad{font-size:12.5px;color:var(--gray);margin:0 0 12px;line-height:1.5;}
+.reassure{display:flex;gap:9px;align-items:flex-start;margin:12px 0 0;}
+.reassure svg{width:16px;height:16px;flex-shrink:0;margin-top:1px;stroke:var(--green);}
+.reassure p{font-size:12.5px;color:var(--navy);margin:0;line-height:1.5;}
+.reassure b{font-weight:800;}
+
+/* progress self-report module (promoted) */
+.prog{background:var(--tile);border:1px solid var(--line);border-radius:14px;padding:16px 16px 17px;margin:6px 0 0;}
+.prog .ph{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 3px;}
+.prog h4{font-size:15px;font-weight:800;color:var(--navy);margin:0;letter-spacing:-0.2px;}
+.prog .stamp{font-size:10px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase;color:var(--gray);background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 9px;white-space:nowrap;}
+.prog .help{font-size:12px;color:var(--gray);margin:0 0 13px;line-height:1.5;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;font-size:13.5px;font-weight:600;color:var(--navy);cursor:pointer;text-align:left;font-family:inherit;}
+.opt .dot{width:16px;height:16px;border-radius:50%;border:2px solid #C9CDDA;flex-shrink:0;}
+.opt.sel{border-color:var(--coral);background:var(--coral-soft);}
+.opt.sel .dot{border-color:var(--coral);background:var(--coral);box-shadow:inset 0 0 0 3px #fff;}
+
+/* heard-back branch */
+.branch{margin:13px 0 0;padding:14px 15px 15px;background:#fff;border:1.5px dashed var(--coral);border-radius:12px;}
+.branch .bq{font-size:13px;font-weight:800;color:var(--navy);margin:0 0 11px;}
+.branchbtns{display:flex;flex-direction:column;gap:8px;}
+.bbtn{display:flex;align-items:center;gap:9px;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;font-size:13.5px;font-weight:700;color:var(--navy);cursor:pointer;text-align:left;font-family:inherit;}
+.bbtn .ic{width:20px;height:20px;flex-shrink:0;}
+.bbtn.sel{border-color:var(--coral);background:var(--coral-soft);}
+.bbtn.approved.sel{border-color:var(--green);background:var(--green-soft);}
+
+/* denial / more-docs support box */
+.support{background:#fff;border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:12px;padding:17px 17px 16px;margin:14px 0 0;box-shadow:0 4px 14px rgba(27,33,80,0.06);}
+.support h4{font-size:15.5px;font-weight:800;color:var(--navy);margin:0 0 6px;letter-spacing:-0.2px;}
+.support .lead{font-size:13px;color:var(--gray);font-style:italic;margin:0 0 14px;line-height:1.55;}
+.echeck{display:flex;flex-direction:column;gap:13px;margin:0 0 4px;}
+.eci{display:flex;gap:11px;align-items:flex-start;}
+.eci .num{width:23px;height:23px;border-radius:50%;background:var(--coral);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.eci .lab{font-size:13px;color:var(--navy);font-weight:600;line-height:1.45;}
+.eci .lab span{color:var(--gray);font-weight:400;}
+
+/* optional reason single-select */
+.reason{margin:16px 0 0;padding-top:15px;border-top:1px solid var(--line);}
+.reason .rl{font-size:12.5px;font-weight:800;color:var(--navy);margin:0 0 3px;}
+.reason .ro{font-size:11.5px;color:var(--gray);margin:0 0 11px;font-style:italic;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:700;color:var(--navy);cursor:pointer;font-family:inherit;}
+.chip:hover{border-color:var(--coral);}
+.chip.sel{border-color:var(--coral);background:var(--coral-soft);color:var(--coral-dark);}
+
+/* honest self-report caveat */
+.selfnote{display:flex;gap:9px;align-items:flex-start;background:var(--tile);border-radius:11px;padding:12px 13px;margin:14px 0 0;}
+.selfnote svg{width:16px;height:16px;flex-shrink:0;stroke:var(--gray);margin-top:1px;}
+.selfnote p{font-size:11.5px;color:var(--gray);margin:0;line-height:1.5;}
+.selfnote b{color:var(--navy);font-weight:800;}
+
+.call-ready{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:14px;padding:17px 17px 16px;margin:12px 0 0;}
+.call-ready .call-kicker{font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--warn-ink);margin:0 0 5px;}
+.call-ready h4{font-size:16px;font-weight:800;color:var(--navy);margin:0 0 6px;line-height:1.3;}
+.call-ready p{font-size:12.5px;color:var(--gray);margin:0;line-height:1.55;}
+.call-ready .unknown-note{display:flex;align-items:flex-start;gap:8px;margin-top:11px;}
+.call-ready .unknown-note svg{width:19px;height:19px;stroke:var(--warn-ink);flex:0 0 auto;margin-top:1px;}
+.call-ready .unknown-note p{color:var(--navy);}
+
+.mini{max-width:440px;margin:9px auto 0;font-size:11.5px;color:var(--gray);font-style:italic;line-height:1.55;}
+.mini b{color:var(--navy);font-style:normal;}
+</style>
+</head>
+<body>
+<div class="chrome"><svg class="pyr" viewBox="0 0 100 100" aria-label="SBNC"><polygon points="50,18 78,40 22,40" fill="#FF5A5F"></polygon><polygon points="50,46 84,68 16,68" fill="#FF5A5F"></polygon><polygon points="50,74 90,96 10,96" fill="#FF5A5F"></polygon></svg><span><b>SBNC × ideas42</b> · Roadmap changes (Paige + Slack feedback) — build reference for Travis</span></div>
+<div class="stage">
+<p class="framecap"><b>Four roadmap changes, shown as real screens.</b> Modeled in a <b>separate-portal state</b> (two programs, two applications) so the recommend-first ranking is visible. Placeholder program, portal, agency, phone, and dollar values stand in for dynamic data fields — see the build notes in the page source. Changes&nbsp;2 and&nbsp;3 share one back-end capability (capture&nbsp;→ persist&nbsp;→ link to the student record&nbsp;→ report).</p>
+
+<!-- ========================================================================
+     CHANGE 1 — "CHOOSE YOUR BENEFITS": RECOMMEND-FIRST, VALUE-RANKED
+     ======================================================================== -->
+<div class="cap">
+  <p class="cap-eyebrow">Change 1 · Recommend-first</p>
+  <h2 class="cap-title">"Choose your benefits" — recommend one first</h2>
+  <p class="cap-sub">The example uses the estimated SNAP amount to determine order. Every eligible program stays visible; the final ranking rule is a meeting decision, not a settled requirement.</p>
+</div>
+
+<!-- BUILD NOTE — Change 1 (FRONT-END ONLY, no new back-end)
+     TRIGGER / LOGIC:
+       · Applies ONLY when combinedApplication === false (separate portals).
+         When combinedApplication === true (e.g. California / one BenefitsCal
+         portal), show the EXISTING single CTA to the combined portal — NO
+         ranking, NO "Also worth applying for". Leave that scenario unchanged.
+       · RECOMMENDED EXAMPLE: rank eligible programs by {{estimatedBenefit}}
+         (descending). Highest = primary CTA, rendered first with its "$X/month"
+         amount. All others render beneath under "Also worth applying for", each
+         with its own CTA.
+       · Programs with no monetary estimate (e.g. Medicaid = coverage, not cash)
+         sort after programs that have one; render without a dollar figure.
+     DATA FIELDS: combinedApplication (bool), and per program:
+       {{programName}}, {{estimatedBenefit}} (monthly $, nullable),
+       {{portalName}}, {{portalUrl}}.
+     DECIDE IN PRODUCT MEETING: confirm whether estimated SNAP value alone sets
+       order or whether another rule is needed for programs without dollar
+       estimates. Do not ship the example logic as an unreviewed requirement.
+     GUARDRAIL (hard): ORDER ONLY. Never hide, collapse, gate, or de-list any
+       eligible program — every one stays visible and one tap away. Keep the
+       reassurance that applying for one does not affect the other.
+-->
+<div class="phone">
+  <div class="phone-bar"><span class="badge">NAVVY</span><span class="tag">Your benefits roadmap</span></div>
+  <div class="screen">
+    <p class="reyebrow">Step 2 of 3</p>
+    <div class="rmap">
+      <div class="rstep">
+        <div class="rrail"><div class="rnode done"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="rline"></div></div>
+        <div class="rbody"><span class="rlab done">Done</span><p class="rttl">Check what you qualify for</p><p class="rdsc">You finished the eligibility screener.</p></div>
+      </div>
+      <div class="rstep">
+        <div class="rrail"><div class="rnode here">2</div></div>
+        <div class="rbody">
+          <span class="rlab here">You're here</span>
+          <p class="rttl">Choose your benefits</p>
+          <p class="rdsc" style="margin-bottom:14px;">You likely qualify for two programs. We suggest where to start — but both are worth applying for.</p>
+
+          <!-- PRIMARY (highest {{estimatedBenefit}}) -->
+	          <div class="benefit">
+	            <span class="eyebrow">We suggest starting here</span>
+	            <h3>SNAP food benefits — about <em class="amt">$291/month</em> for groceries.</h3>
+	          </div>
+          <button class="ebtn">Start my SNAP application →</button>
+          <div class="reassure">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p>You can still apply for the other program too — <b>applying for one doesn't affect the other.</b></p>
+          </div>
+
+          <!-- SECONDARY (still fully visible, never hidden) -->
+          <p class="rec-also-lbl">Also worth applying for</p>
+          <div class="rec-also">
+            <p class="an">Medicaid health coverage</p>
+            <p class="ad">Low- or no-cost health coverage. No monthly dollar estimate — it's coverage, not cash.</p>
+            <button class="sbtn">Apply for Medicaid →</button>
+          </div>
+        </div>
+      </div>
+      <div class="rstep">
+        <div class="rrail"><div class="rnode todo">3</div></div>
+        <div class="rbody"><span class="rlab" style="background:#EDEFF3;color:#AEB3C0;">Next</span><p class="rttl">Share an update</p><p class="rdsc">Tell us how it's going so we can help.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="mini"><b>Combined-portal states (combinedApplication = true):</b> this step collapses to the existing single CTA (e.g. "Go to BenefitsCal →") with no ranking — leave it as-is.</p>
+
+<hr class="change-divider">
+
+<!-- ========================================================================
+     CHANGE 2 — PROMOTE THE SELF-REPORT TO "UPDATE YOUR PROGRESS"
+     ======================================================================== -->
+<div class="cap">
+  <p class="cap-eyebrow">Change 2 · Process awareness</p>
+  <h2 class="cap-title">A standing "Update your progress" check-in</h2>
+  <p class="cap-sub">The self-report moves out of the background to sit directly under the primary next-step action — prominent, honest, and timestamped.</p>
+</div>
+
+<!-- BUILD NOTE — Change 2 (KEYSTONE back-end: shared with Change 3)
+     PLACEMENT: render directly BELOW the primary next-step CTA — standing, not
+       buried. Heading: "Update your progress."
+     BEHAVIOR: single-select. On select, write a self-report EVENT
+       {studentId, field:'application_progress', value, timestamp}, PERSIST it,
+       and LINK it to the student record. Show the "Self-reported just now"
+       stamp with the write timestamp.
+     WHY IT NEEDS BACK-END: without persistence + linkage the answer can't tailor
+       the next step or feed measurement. This is the same data layer Change 3
+       rides on — build once.
+     DATA FIELDS: {{applicationProgress}} (enum below), {{lastSelfReportAt}}.
+     MEASUREMENT / HONESTY: this is SELF-REPORT, not portal data — Navvy can't
+       see the state portal. A portal click confirms only that the link opened.
+       Keep nonresponse visible; report among respondents.
+     OPTIONS ENUM (configurable): submitted | started_not_submitted |
+       not_started | heard_back | not_applying.  ("I heard back" opens Change 3.)
+-->
+<div class="phone">
+  <div class="phone-bar"><span class="badge">NAVVY</span><span class="tag">Your benefits roadmap</span></div>
+  <div class="screen">
+    <div class="nextstep">
+      <span class="ns-kicker">Your next step</span>
+      <h3 class="ns-title">Complete your SNAP application.</h3>
+    </div>
+    <button class="ebtn">Go to your state's SNAP portal →</button>
+
+    <!-- PROMOTED self-report, directly under the primary CTA -->
+    <div class="prog">
+      <div class="ph">
+        <h4>Update your progress</h4>
+        <span class="stamp">Self-reported · just now</span>
+      </div>
+      <p class="help">This helps Navvy show you a useful next step. It won't affect your application.</p>
+      <div class="opts">
+        <button class="opt sel"><span class="dot"></span>I submitted it</button>
+        <button class="opt"><span class="dot"></span>I started but haven't submitted</button>
+        <button class="opt"><span class="dot"></span>I haven't started</button>
+        <button class="opt"><span class="dot"></span>I heard back</button>
+        <button class="opt"><span class="dot"></span>I'm not applying right now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="change-divider">
+
+<!-- ========================================================================
+     CHANGE 3 — "I HEARD BACK" BRANCH + FIXABLE-DENIAL SUPPORT + OPTIONAL REASON
+     ======================================================================== -->
+<div class="cap">
+  <p class="cap-eyebrow">Change 3 · Heard back</p>
+  <h2 class="cap-title">"I heard back" → Approved / Denied / Asked for more</h2>
+  <p class="cap-sub">Choosing "I heard back" opens a branch. Denied or "asked for more" shows a calm, fixable-denial support box; Denied also offers an optional, self-reported reason.</p>
+</div>
+
+<!-- BUILD NOTE — Change 3 (KEYSTONE back-end + REPORTING surface)
+     FLOW:
+       1. Selecting "I heard back" (Change 2 option) reveals: "How did it go?"
+          → Approved | Denied | Asked for more documents.
+       2. Denied OR "Asked for more documents" → show the fixable-denial support
+          box (below). "Approved" → show the approved next-steps (mirror the
+          comms.html Email 4 "If you were approved" path; not re-drawn here).
+       3. Denied ONLY → also show the OPTIONAL single-select reason.
+     DATA FIELDS: {{heardBackOutcome}} (approved|denied|more_docs),
+       {{denialReason}} (missing_docs|income_too_high|didnt_finish|not_sure|null).
+     REPORTING (Paige's actual ask — "track denial reasons / whether certain
+       students are denied more often"): persist outcome + reason as events
+       linked to the student record so they roll up into the dashboard reporting
+       tool. Analyze descriptively among respondents only. Any geography or
+       demographic cuts require agreed privacy rules and safe minimum cell sizes;
+       do not use these answers for eligibility or individual-level decisions.
+     GUARDRAIL (hard): SELF-REPORTED SIGNAL ONLY — Navvy can't see the state
+       portal. Never present it as portal truth. Keep nonresponse visible and
+       report among respondents. Never submit or act on the application for the
+       student; always hand off to the official portal.
+-->
+<div class="phone">
+  <div class="phone-bar"><span class="badge">NAVVY</span><span class="tag">Your benefits roadmap</span></div>
+  <div class="screen">
+    <div class="prog">
+      <div class="ph">
+        <h4>Update your progress</h4>
+        <span class="stamp">Self-reported · just now</span>
+      </div>
+      <div class="opts">
+        <button class="opt"><span class="dot"></span>I submitted it</button>
+        <button class="opt sel"><span class="dot"></span>I heard back</button>
+      </div>
+
+      <!-- branch revealed by "I heard back" -->
+      <div class="branch">
+        <p class="bq">How did it go?</p>
+        <div class="branchbtns">
+          <button class="bbtn approved"><svg class="ic" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0E7A4E" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="#0E7A4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>I was approved</button>
+          <button class="bbtn sel"><svg class="ic" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#FF5A5F" stroke-width="2"/><path d="M12 8v5" stroke="#FF5A5F" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16.3" r="1" fill="#FF5A5F"/></svg>I was denied</button>
+          <button class="bbtn"><svg class="ic" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="#7A8093" stroke-width="2"/><path d="M8 10h8M8 14h5" stroke="#7A8093" stroke-width="2" stroke-linecap="round"/></svg>They asked for more documents</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- support box: shown for Denied OR "asked for more documents" -->
+    <div class="support">
+      <h4>A denial often isn't final.</h4>
+      <p class="lead">Many denials are just a missing document or a form that needs another signature — and those are usually fixable.</p>
+      <div class="echeck">
+        <div class="eci"><span class="num">1</span><span class="lab">Read the notice for the reason. <span>It will say what was missing or why you were denied.</span></span></div>
+        <div class="eci"><span class="num">2</span><span class="lab">Send the missing documents through your state's portal, <span>or call your county or agency to ask what they need.</span></span></div>
+        <div class="eci"><span class="num">3</span><span class="lab">If you think the decision is wrong, reapply or ask for a review. <span>Sometimes called an appeal or fair hearing — the notice explains how.</span></span></div>
+        <div class="eci"><span class="num">4</span><span class="lab">Still stuck? Get help. <span>Your county office can walk you through it, or reach us at help@studentbasicneeds.com.</span></span></div>
+      </div>
+
+      <!-- optional single-select reason (Denied only) -->
+      <div class="reason">
+        <p class="rl">Do you know why?</p>
+        <p class="ro">Optional — this helps us improve support for students like you.</p>
+        <div class="chips">
+          <button class="chip sel">Missing documents</button>
+          <button class="chip">Missed an interview or follow-up</button>
+          <button class="chip">Income or eligibility issue</button>
+          <button class="chip">Other / not sure</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="selfnote">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke-width="2"/><path d="M12 11v5" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.7" r="1" fill="#7A8093" stroke="none"/></svg>
+      <p><b>This is self-reported.</b> Navvy can't see the state portal — we use your answer only to show you a helpful next step.</p>
+    </div>
+  </div>
+</div>
+<p class="mini"><b>Approved path</b> (not re-drawn here): mirror the comms.html Email 4 "If you were approved" steps — watch for the EBT card, note the renewal date, report changes to your county.</p>
+
+<hr class="change-divider">
+
+<!-- ========================================================================
+     CHANGE 4 — INTERVIEW-CALL READINESS
+     ======================================================================== -->
+<div class="cap">
+  <p class="cap-eyebrow">Change 4 · Contact readiness</p>
+  <h2 class="cap-title">Help students recognize agency outreach</h2>
+  <p class="cap-sub">Use a static phone tip without promising device integration. Remind students that calls may still come from a different or unknown number.</p>
+</div>
+
+<!-- BUILD NOTE — Change 4 (FRONT-END ONLY)
+     PLACEMENT: in "What to expect" and the post-application email/SMS.
+     LOGIC:
+       · Show a static tip encouraging students to save the agency number once
+         they know it.
+       · Do not include a "Save to contacts" button until device support is
+         technically confirmed.
+     GUARDRAIL: Never imply that all agency calls use the same number. Keep the
+       unknown-number and voicemail guidance.
+-->
+<div class="phone">
+  <div class="phone-bar"><span class="badge">NAVVY</span><span class="tag">What to expect after applying</span></div>
+  <div class="screen">
+    <div class="nextstep">
+      <span class="ns-kicker">Prepare for possible follow-up</span>
+      <h3 class="ns-title">Make agency messages easier to recognize.</h3>
+    </div>
+    <div class="call-ready">
+      <div class="unknown-note">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9.5 18h5M10.2 21h3.6" stroke-width="2" stroke-linecap="round"/><path d="M12 3a6.5 6.5 0 0 0-3.6 11.9c.7.5 1.1 1.2 1.1 2v.1h5v-.1c0-.8.4-1.5 1.1-2A6.5 6.5 0 0 0 12 3Z" stroke-width="2" stroke-linejoin="round"/></svg>
+        <p><b>Tip:</b> Save your agency’s phone number as a contact before or after they first reach out, so you don’t miss any of their messages. Calls may still come from a different number, so check voicemail too.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="mini"><b>V1 cutoff:</b> static guidance only; no direct device integration or phone-number maintenance.</p>
+
+</div>
+</body>
+</html>
