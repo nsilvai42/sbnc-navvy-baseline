@@ -79,7 +79,7 @@
         </div>
       </div>
 
-      <!-- step-nav: links between the state files stand in for the app's front-end step flip - visual state only, no data capture (2026-07-28 agreement) -->
+      <!-- step-nav: fully self-serve - students can jump to any step at any time (links between the state files stand in for the page swap). Only the step 1->2 transition can be data-driven (screener completion); after that the app has no signal, so every step change is self-reported. Visual state only, no data capture (2026-07-28 agreement). -->
       <ol class="list-none m-0 p-0 mt-7 grid gap-3" aria-label="Application journey">
           <li class="relative grid grid-cols-[46px_minmax(0,1fr)] gap-3.5 min-w-0 after:content-[&#39;&#39;] after:absolute after:w-[2px] after:top-[44px] after:-bottom-[18px] after:left-[22px] after:bg-roadmap-green">
             <span class="relative z-10 flex justify-center items-center size-[46px] rounded-full font-extrabold text-xs bg-roadmap-green border-2 border-roadmap-green text-white"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="18" viewBox="0 0 24 24" width="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="m5 12 4.2 4.2L19 6.5"/></svg></span>
@@ -154,7 +154,7 @@
                   <span class="block uppercase tracking-wider text-[8.5px] font-extrabold leading-snug text-roadmap-muted-soft">Last step</span>
                   <h3 class="m-0 mt-1 text-base leading-snug font-extrabold text-roadmap-muted-dim">Get your decision</h3>
                 </div>
-                <span class="justify-self-end flex items-center gap-1 uppercase tracking-wider text-[8.5px] font-extrabold text-roadmap-muted-soft whitespace-nowrap mt-1"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="11" viewBox="0 0 24 24" width="11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Opens after step 3</span>
+                <a href="state_general_roadmap--04_awaiting_decision.html" class="justify-self-end flex items-center gap-1 text-[10px] font-extrabold text-roadmap-coral-dark underline underline-offset-2 whitespace-nowrap mt-1">I'm on this step<svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="12" viewBox="0 0 24 24" width="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
               </div>
 
             </div>

@@ -67,12 +67,13 @@
           <a href="#" class="flex justify-center items-center gap-2 w-full mt-2.5 bg-white border-2 border-roadmap-coral-line text-roadmap-coral-dark font-bold text-sm text-center rounded-xl px-4 py-3 no-underline">I've submitted my application — show step 3 <svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="15" viewBox="0 0 24 24" width="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
 
-        <!-- STATE: locked — plain row, gray badge, optional micro-label eyebrow + title only, no preview copy. -->
+        <!-- STATE: upcoming (self-serve) — plain row, gray badge, eyebrow + title, stacked "I'm on this step" jump link. Students can jump ahead any time; never render these as locked. -->
         <div class="flex gap-3.5 items-center px-1 py-4">
           <div class="size-9 rounded-full bg-roadmap-tile text-roadmap-muted-soft shrink-0 flex justify-center items-center text-base font-bold">3</div>
           <div class="flex-1">
             <p class="text-[10px] font-extrabold uppercase tracking-wider text-roadmap-muted-soft m-0 mb-0.5">After applying</p>
             <p class="text-base font-bold text-roadmap-navy m-0 leading-tight">Complete follow-up requests</p>
+            <a href="#" class="inline-flex items-center gap-1 mt-1.5 text-xs font-extrabold text-roadmap-coral-dark underline underline-offset-2">I'm on this step<svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="13" viewBox="0 0 24 24" width="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </div>
         </div>
 
@@ -116,7 +117,7 @@
           </div>
         </li>
 
-        <!-- STATE: locked — surface-muted card, gray-bordered white badge, eyebrow + title only, no preview copy. Right-aligned padlock hint "Opens after step N" (third auto grid column, desktop only). Last item has no connector. -->
+        <!-- STATE: upcoming (self-serve) — surface-muted card, gray-bordered white badge, eyebrow + title only. Right-aligned "I'm on this step" jump link (third auto grid column). Students can jump ahead any time; never render these as locked. Last item has no connector. -->
         <li class="relative grid grid-cols-[46px_minmax(0,1fr)] gap-3.5 min-w-0 ">
           <span class="relative z-10 flex justify-center items-center size-[46px] rounded-full font-extrabold text-xs bg-white border-2 border-roadmap-line-strong text-roadmap-muted-soft">3</span>
           <div class="bg-roadmap-surface-muted border border-roadmap-line rounded-[14px_4px] p-5 transition-colors">
@@ -126,7 +127,7 @@
                 <span class="block uppercase tracking-wider text-[8.5px] font-extrabold leading-snug text-roadmap-muted-soft">After applying</span>
                 <h3 class="m-0 mt-1 text-base leading-snug font-extrabold text-roadmap-muted-dim">Complete follow-up requests</h3>
               </div>
-              <span class="justify-self-end flex items-center gap-1 uppercase tracking-wider text-[8.5px] font-extrabold text-roadmap-muted-soft whitespace-nowrap mt-1"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="11" viewBox="0 0 24 24" width="11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Opens after step 2</span>
+              <a href="#" class="justify-self-end flex items-center gap-1 text-[10px] font-extrabold text-roadmap-coral-dark underline underline-offset-2 whitespace-nowrap mt-1">I'm on this step<svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="12" viewBox="0 0 24 24" width="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
             </div>
           </div>
         </li>
@@ -139,10 +140,10 @@
       <ul class="m-0 pl-4 grid gap-1">
         <li>Timeline connectors (desktop): done→done solid green; the gradient green→coral appears ONLY on the segment entering the current step; current→upcoming coral→gray (<code class="bg-roadmap-tile px-1 rounded">line-strong</code>).</li>
         <li>One current step per roadmap; the current card carries the page's single primary CTA.</li>
-        <li>Locked steps never show preview/body copy — eyebrow + title only.</li>
+        <li>Upcoming steps never show preview/body copy — eyebrow + title + jump link only.</li>
         <li>Never mix the two radius systems: ticket corners are desktop-state-roadmap only.</li>
-        <li>Step navigation (added 2026-08-02): every done bar carries a green "Go back" link (desktop: right end of the bar; mobile: right of the DONE label — never beside the title, which can't shrink at 375px). The current card may carry one self-report advance button ("I've submitted my application — show step 3"); the final step never does. Locked desktop cards show the padlock hint "Opens after step N"; mobile locked rows stay bare.</li>
-        <li>All step-navigation controls are front-end state flips only — no data capture, no storage (2026-07-28 agreement). In the mocks they link between the four state files; in the app, bind them to the roadmap's user-interaction-only step state. Keep the reassurance footnote under the list ("Updating your step here only changes this page — never your actual application.").</li>
+        <li>Step navigation (2026-08-02, fully self-serve): every step is reachable at any time — students can skip ahead or go back whenever they want. Done bars carry a green "Go back" link (desktop: right end of the bar; mobile: right of the DONE label — never beside the title, which can't shrink at 375px). The current card may carry one self-report advance button ("I've submitted my application — show step 3"); the final step never does. Upcoming steps carry a coral "I'm on this step" jump link (desktop: right-aligned in the header; mobile: stacked under the title). Never render upcoming steps as locked or gated.</li>
+        <li>Why self-serve: only the step 1→2 transition can ever be data-driven (Navvy sees screener completion); after that the app has no signal about applications, follow-ups, or decisions, so every step change is self-reported. Controls are front-end page/state swaps only — no data capture, no storage (2026-07-28 agreement). In the mocks they link between the four state files. Keep the reassurance footnote under the list ("Updating your step here only changes this page — never your actual application.").</li>
       </ul>
     </div>
   </div>
