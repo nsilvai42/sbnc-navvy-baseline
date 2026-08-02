@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Navvy design mocks — 2026-08-02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --navy:#1e2658; --navy-deep:#11163a; --coral:#ff5a5f; --coral-dark:#e84a4f;
+    --coral-soft:#ffedef; --green:#0e744a; --green-soft:#e5f6ee; --green-line:#cae9da;
+    --cream:#f7f6ef; --line:#dfe3ea; --muted:#6f768c; --muted-soft:#9aa0b0; --tile:#f1f3f5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Poppins",ui-sans-serif,system-ui,sans-serif;color:var(--navy);background:var(--cream)}
+  header{background:var(--navy-deep);color:#fff;padding:20px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .mark{background:var(--coral);border-radius:10px 3px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}
+  .mark i{display:block;width:0;height:0;border-top:5px solid #fff;border-left:7px solid transparent;border-right:7px solid transparent;transform:rotate(180deg)}
+  header .t{display:flex;flex-direction:column}
+  header strong{font-family:"Archivo Black",sans-serif;letter-spacing:.04em;font-size:18px;line-height:1.2}
+  header span{color:rgba(255,255,255,.7);font-size:12px;margin-top:3px}
+  main{max-width:880px;margin:0 auto;padding:32px 20px 56px}
+  .intro{font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 6px;max-width:640px}
+  .intro strong{color:var(--navy)}
+  section{background:#fff;border:1px solid var(--line);border-radius:6px 22px;box-shadow:0 10px 26px #1e26580d;padding:22px 24px;margin-top:22px;overflow:hidden}
+  .eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800;color:var(--coral);margin:0 0 4px}
+  h2{margin:0;font-size:20px;font-weight:800;letter-spacing:-.01em}
+  .sub{font-size:12.5px;color:var(--muted);margin:6px 0 0;line-height:1.55;max-width:620px}
+  .new{display:inline-flex;background:var(--green-soft);border:1px solid var(--green-line);color:var(--green);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;border-radius:6px 2px;padding:2px 8px;margin-left:8px;vertical-align:2px}
+  ul.pages{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+  ul.pages li{display:flex;align-items:center;gap:12px;background:var(--cream);border:1px solid var(--line);border-radius:14px 4px;padding:10px 14px;flex-wrap:wrap}
+  .num{width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--line);color:var(--muted-soft);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .name{font-size:13.5px;font-weight:700;flex:1;min-width:180px}
+  .name small{display:block;font-weight:500;color:var(--muted);font-size:11px;margin-top:1px}
+  .links{display:flex;gap:8px;flex-shrink:0}
+  .links a{font-size:11.5px;font-weight:800;text-decoration:none;border-radius:10px 3px;padding:7px 14px;border:2px solid transparent}
+  a.primary{background:var(--coral);color:#fff}
+  a.primary:hover{background:var(--coral-dark)}
+  a.ghost{background:#fff;border-color:var(--line);color:var(--navy)}
+  a.ghost:hover{border-color:var(--coral);color:var(--coral-dark)}
+  .cta{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-size:13.5px;font-weight:800;text-decoration:none;border-radius:12px 3px;padding:12px 20px;margin-top:16px;box-shadow:0 10px 22px #ff5a5f47}
+  .cta:hover{background:var(--coral-dark)}
+  footer{max-width:880px;margin:0 auto;padding:0 20px 40px;font-size:12px;color:var(--muted);line-height:1.6}
+  footer a{color:var(--coral-dark);font-weight:700}
+</style>
+</head>
+<body>
+<header>
+  <span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>
+  <div class="t">
+    <strong>NAVVY DESIGN MOCKS</strong>
+    <span>ideas42 × SBNC · lookbook handoff · 2026-08-02 · this page covers only this drop</span>
+  </div>
+</header>
+<main>
+  <p class="intro"><strong>Every surface ships in both mobile and desktop.</strong> All markup is Tailwind utilities on the app's compiled <code>roadmap-*</code> theme tokens — see the README for porting notes and the full list of deltas vs. the live lookbook.</p>
+
+  <section>
+    <p class="eyebrow">Surface 1 · Illinois worked example</p>
+    <h2>State-general roadmap<span class="new">New: step navigation</span></h2>
+    <p class="sub">Four journey states. Done bars carry "Go back," the current step carries a self-report advance button, locked steps show "Opens after step N." The buttons link the four states together, so you can walk the whole journey — front-end state flips only, no data capture.</p>
+    <a class="cta" href="roadmap_general/state_general_roadmap--01_just_started.html">Start the click-through at state 01 →</a>
+    <ul class="pages">
+      <li><span class="num">01</span><span class="name">Just started<small>Eligibility check is the current step</small></span><span class="links"><a class="ghost" href="roadmap_general/state_general_roadmap--01_just_started.html">Desktop</a><a class="ghost" href="roadmap_general/state_general_roadmap--01_just_started--mobile.html">Mobile</a></span></li>
+      <li><span class="num">02</span><span class="name">Ready to apply<small>Doc chips + Illinois ABE hand-off</small></span><span class="links"><a class="ghost" href="roadmap_general/state_general_roadmap--02_ready_to_apply.html">Desktop</a><a class="ghost" href="roadmap_general/state_general_roadmap--02_ready_to_apply--mobile.html">Mobile</a></span></li>
+      <li><span class="num">03</span><span class="name">Awaiting follow-up<small>Follow-up sub-tiles + deadline tip</small></span><span class="links"><a class="ghost" href="roadmap_general/state_general_roadmap--03_awaiting_follow_up.html">Desktop</a><a class="ghost" href="roadmap_general/state_general_roadmap--03_awaiting_follow_up--mobile.html">Mobile</a></span></li>
+      <li><span class="num">04</span><span class="name">Awaiting decision<small>Manage My Case + approved/denied paths</small></span><span class="links"><a class="ghost" href="roadmap_general/state_general_roadmap--04_awaiting_decision.html">Desktop</a><a class="ghost" href="roadmap_general/state_general_roadmap--04_awaiting_decision--mobile.html">Mobile</a></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="eyebrow">Surface 2 · Wisconsin / Impactica flow</p>
+    <h2>Application roadmap</h2>
+    <p class="sub">Four journey states; mobile is the canonical shell (~85–90% of student traffic), desktop is the companion.</p>
+    <ul class="pages">
+      <li><span class="num">01</span><span class="name">Just started</span><span class="links"><a class="ghost" href="roadmap_wisconsin/application_roadmap--01_just_started.html">Mobile</a><a class="ghost" href="roadmap_wisconsin/application_roadmap--01_just_started--desktop.html">Desktop</a></span></li>
+      <li><span class="num">02</span><span class="name">Choosing benefits</span><span class="links"><a class="ghost" href="roadmap_wisconsin/application_roadmap--02_choosing_benefits.html">Mobile</a><a class="ghost" href="roadmap_wisconsin/application_roadmap--02_choosing_benefits--desktop.html">Desktop</a></span></li>
+      <li><span class="num">03</span><span class="name">Completing application</span><span class="links"><a class="ghost" href="roadmap_wisconsin/application_roadmap--03_completing_application.html">Mobile</a><a class="ghost" href="roadmap_wisconsin/application_roadmap--03_completing_application--desktop.html">Desktop</a></span></li>
+      <li><span class="num">04</span><span class="name">All done<small>"Congrats on applying!" + what-to-expect mini-timeline</small></span><span class="links"><a class="ghost" href="roadmap_wisconsin/application_roadmap--04_all_done.html">Mobile</a><a class="ghost" href="roadmap_wisconsin/application_roadmap--04_all_done--desktop.html">Desktop</a></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="eyebrow">Surface 3 · New surface</p>
+    <h2>Ineligible / $0 result page</h2>
+    <p class="sub">Shown when the screener finds no likely eligibility: free help near you (findhelp.org lead), then "worth a second look" reassurance with a retake path.</p>
+    <ul class="pages">
+      <li><span class="num">IL</span><span class="name">State-general variant</span><span class="links"><a class="ghost" href="ineligible/ineligible--state-general.html">Desktop</a><a class="ghost" href="ineligible/ineligible--state-general--mobile.html">Mobile</a></span></li>
+      <li><span class="num">WI</span><span class="name">Wisconsin variant</span><span class="links"><a class="ghost" href="ineligible/ineligible--wisconsin.html">Desktop</a><a class="ghost" href="ineligible/ineligible--wisconsin--mobile.html">Mobile</a></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="eyebrow">For the lookbook's components section</p>
+    <h2>Component specimens</h2>
+    <p class="sub">Reusable pieces extracted from the shipped mocks, with every state and variant labeled and usage rules inline.</p>
+    <ul class="pages">
+      <li><span class="num">C1</span><span class="name">Roadmap step card<small>Done / current / locked · mobile + desktop · connectors + step-navigation affordances</small></span><span class="links"><a class="ghost" href="components/component--roadmap_step_card.html">Open</a></span></li>
+      <li><span class="num">C2</span><span class="name">Tile list<small>Info sub-tile, resource row, doc chip, tip callout</small></span><span class="links"><a class="ghost" href="components/component--tile_list.html">Open</a></span></li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <p>Porting notes, token list, and all deltas vs. the live lookbook: <a href="https://github.com/nsilvai42/sbnc-navvy-baseline/blob/main/lookbook-mocks-2026-08-02/README.md">README</a> · <a href="https://github.com/nsilvai42/sbnc-navvy-baseline/tree/main/lookbook-mocks-2026-08-02">source on GitHub</a>. Built by ideas42 for the Student Basic Needs Coalition.</p>
+</footer>
+</body>
+</html>

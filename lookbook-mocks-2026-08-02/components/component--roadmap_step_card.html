@@ -1,0 +1,151 @@
+<!-- drafting — reusable component specimen: roadmap step card (all states, both surfaces). Markup is copy-paste-ready Tailwind using the app's roadmap-* theme tokens; the inline @theme block exists only so this standalone file renders. -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Component — Roadmap step card</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      /* Theme tokens verbatim from the app's compiled Tailwind CSS (see _ds tokens/colors.css + tokens/effects.css) */
+      @theme {
+        --color-roadmap-navy:#1e2658; --color-roadmap-navy-deep:#11163a; --color-roadmap-navy-appbar:#16204f;
+        --color-roadmap-ink:#1e2658;
+        --color-roadmap-coral:#ff5a5f; --color-roadmap-coral-dark:#e84a4f; --color-roadmap-coral-soft:#ffedef;
+        --color-roadmap-coral-tint:#fffafb; --color-roadmap-coral-line:#ffb9bc; --color-roadmap-coral-divider:#f0dadd;
+        --color-roadmap-green:#0e744a; --color-roadmap-green-deep:#075d3a;
+        --color-roadmap-green-bright:#68e0a0; --color-roadmap-green-soft:#e5f6ee; --color-roadmap-green-line:#cae9da;
+        --color-roadmap-cream:#f7f6ef; --color-roadmap-line:#dfe3ea; --color-roadmap-line-strong:#d9dde5;
+        --color-roadmap-muted:#6f768c; --color-roadmap-muted-dim:#60687a; --color-roadmap-muted-soft:#9aa0b0;
+        --color-roadmap-muted-cool:#7a8093; --color-roadmap-tile:#f1f3f5; --color-roadmap-surface-muted:#f7f8fa;
+        --font-roadmap-body:"Poppins",ui-sans-serif,system-ui,sans-serif;
+        --font-roadmap-display:"Archivo Black",ui-sans-serif,sans-serif;
+      }
+    </style>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&display=swap">
+
+  </head>
+  <body class="bg-roadmap-cream font-roadmap-body text-roadmap-navy antialiased p-6">
+
+  <div class="max-w-[1180px] mx-auto">
+    <h1 class="text-2xl font-extrabold tracking-tight m-0">Component: Roadmap step card</h1>
+    <p class="text-sm text-roadmap-muted mt-1.5 mb-8 max-w-[720px]">One component, three states (done / current / locked), two surface variants. Mobile application roadmap uses symmetric rounding (rounded-lg/xl/2xl/full); the desktop state-general roadmap uses the asymmetric ticket-corner motif. All colors and fonts are the app's <code class="text-xs bg-roadmap-tile px-1 py-0.5 rounded">roadmap-*</code> theme tokens — no new values.</p>
+
+    <!-- ============================================================ -->
+    <p class="uppercase tracking-widest text-[11px] font-extrabold text-roadmap-muted-soft mb-3">Mobile surface (448px column, symmetric rounding)</p>
+    <div class="max-w-md">
+      <div class="bg-white border border-roadmap-line rounded-2xl p-5 shadow-[0_2px_6px_#1e26580a]">
+
+        <!-- STATE: done — collapsed green bar. 36px check circle, DONE micro-label, extrabold title. "Go back" sits in the DONE band (never beside the title — it can't shrink at 375px). -->
+        <div class="bg-roadmap-green-soft rounded-xl px-3.5 py-4 flex flex-col ">
+          <div class="flex gap-3.5 items-start">
+            <div class="size-9 rounded-full flex justify-center items-center bg-roadmap-green shrink-0">
+              <svg aria-hidden="true" class="block" fill="none" viewBox="0 0 24 24" width="15" height="15"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <p class="text-xs font-bold uppercase tracking-wider text-roadmap-green m-0">Done</p>
+                <a href="#" aria-label="Go back to this step: Check your eligibility" class="shrink-0 flex items-center gap-1 text-xs font-extrabold text-roadmap-green underline underline-offset-2 whitespace-nowrap"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="13" viewBox="0 0 24 24" width="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Go back</a>
+              </div>
+              <p class="text-base font-bold text-roadmap-navy m-0 leading-tight">Check your eligibility</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATE: current — coral-soft inset, numbered coral badge, body copy, full-width CTA (mobile CTA: rounded-xl, py-5, coral shadow, no hover lift). Optional self-report advance button below the CTA: white fill, 2px coral-line border, coral-dark text — quieter than the primary, never replaces it. -->
+        <div class="bg-roadmap-coral-soft rounded-xl px-3.5 py-4 flex flex-col mt-1.5">
+          <div class="flex gap-3.5 items-start">
+            <div class="size-9 rounded-full bg-roadmap-coral text-white shrink-0 flex justify-center items-center text-base font-bold">2</div>
+            <div class="flex-1">
+              <p class="text-base font-bold text-roadmap-navy m-0 leading-tight">Submit your application</p>
+              <p class="text-sm text-roadmap-muted-cool m-0 mt-1.5 leading-normal">To apply, you'll use the Illinois ABE portal — one application covers both SNAP and Medicaid.</p>
+            </div>
+          </div>
+          <a href="#" class="block w-full mt-4 bg-roadmap-coral text-white font-roadmap-body font-bold text-base text-center rounded-xl px-4 py-5 shadow-[0_8px_18px_#ff5a5f4d] no-underline">Continue to my application</a>
+          <a href="#" class="flex justify-center items-center gap-2 w-full mt-2.5 bg-white border-2 border-roadmap-coral-line text-roadmap-coral-dark font-bold text-sm text-center rounded-xl px-4 py-3 no-underline">I've submitted my application — show step 3 <svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="15" viewBox="0 0 24 24" width="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        </div>
+
+        <!-- STATE: locked — plain row, gray badge, optional micro-label eyebrow + title only, no preview copy. -->
+        <div class="flex gap-3.5 items-center px-1 py-4">
+          <div class="size-9 rounded-full bg-roadmap-tile text-roadmap-muted-soft shrink-0 flex justify-center items-center text-base font-bold">3</div>
+          <div class="flex-1">
+            <p class="text-[10px] font-extrabold uppercase tracking-wider text-roadmap-muted-soft m-0 mb-0.5">After applying</p>
+            <p class="text-base font-bold text-roadmap-navy m-0 leading-tight">Complete follow-up requests</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <p class="uppercase tracking-widest text-[11px] font-extrabold text-roadmap-muted-soft mt-10 mb-3">Desktop state-general surface (1180px shell, ticket corners, 46px badges, timeline connectors)</p>
+    <div class="bg-white border border-roadmap-line rounded-[6px_22px] px-8 py-8 shadow-[0_10px_26px_#1e26580d]">
+      <ol class="list-none m-0 p-0 grid gap-3" aria-label="Application journey">
+
+        <!-- STATE: done — slim green-soft bar, 46px green check badge, 28px white check-circle chip, text-sm extrabold title, right-aligned "Go back" link (third auto grid column). Connector: solid green into the next done step, gradient green→coral into the current step. -->
+        <li class="relative grid grid-cols-[46px_minmax(0,1fr)] gap-3.5 min-w-0 after:content-[''] after:absolute after:w-[2px] after:top-[44px] after:-bottom-[18px] after:left-[22px] after:bg-gradient-to-b after:from-roadmap-green after:to-roadmap-coral">
+          <span class="relative z-10 flex justify-center items-center size-[46px] rounded-full font-extrabold text-xs bg-roadmap-green border-2 border-roadmap-green text-white"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="18" viewBox="0 0 24 24" width="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="m5 12 4.2 4.2L19 6.5"/></svg></span>
+          <div class="bg-roadmap-green-soft border border-roadmap-green-line rounded-[14px_4px] px-4 py-2.5 self-center transition-colors">
+            <div class="grid grid-cols-[28px_minmax(0,1fr)_auto] items-center gap-3">
+              <i class="flex justify-center items-center size-[28px] rounded-full bg-white border border-roadmap-green-line text-roadmap-green"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="15" viewBox="0 0 24 24" width="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v4c0 1.6 2.7 3 6 3s6-1.4 6-3v-4M22 9v6"/></svg></i>
+              <h3 class="m-0 text-sm leading-snug font-extrabold text-roadmap-navy">Check your eligibility</h3>
+              <a href="#" aria-label="Go back to this step: Check your eligibility" class="justify-self-end flex items-center gap-1 text-[10px] font-extrabold text-roadmap-green underline underline-offset-2 whitespace-nowrap"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="12" viewBox="0 0 24 24" width="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Go back</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- STATE: current — coral-tint card, 2px coral-line border, coral halo on the badge, coral-tinted shadow. CTA is the standard desktop primary: min-h-14, rounded-[12px_3px], hover darkens + lifts 1px. Optional self-report advance button in a bordered strip below the header grid (white fill, 2px coral-line border, min-h-10). -->
+        <li class="relative grid grid-cols-[46px_minmax(0,1fr)] gap-3.5 min-w-0 after:content-[''] after:absolute after:w-[2px] after:top-[44px] after:-bottom-[18px] after:left-[22px] after:bg-gradient-to-b after:from-roadmap-coral after:to-roadmap-line-strong">
+          <span class="relative z-10 flex justify-center items-center size-[46px] rounded-full font-extrabold text-xs bg-roadmap-coral border-2 border-roadmap-coral text-white shadow-[0_0_0_5px_var(--color-roadmap-coral-soft)]">2</span>
+          <div class="bg-roadmap-coral-tint border-2 border-roadmap-coral-line rounded-[14px_4px] p-5 shadow-[0_12px_30px_#ff5a5f1a] transition-colors">
+            <div class="grid grid-cols-[38px_minmax(0,1fr)] md:grid-cols-[38px_minmax(0,1fr)_minmax(250px,.8fr)] items-start md:items-center gap-3 md:gap-6">
+              <i class="flex justify-center items-center size-[38px] rounded-[10px_3px] bg-roadmap-coral-soft text-roadmap-coral-dark"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="19" viewBox="0 0 24 24" width="19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 13v6H5V6h6"/></svg></i>
+              <div class="min-w-0">
+                <h3 class="m-0 mt-1 text-base leading-snug font-extrabold text-roadmap-navy">Submit your application</h3>
+                <p class="text-roadmap-muted m-0 mt-1.5 text-[10.5px] leading-normal max-w-[690px]">To apply, you'll use the Illinois ABE portal — one application covers both SNAP and Medicaid.</p>
+              </div>
+              <div class="self-center min-w-0 col-span-full md:col-span-1 md:col-start-3">
+                <a href="#" class="w-full min-h-14 flex justify-center items-center gap-2.5 bg-roadmap-coral hover:bg-roadmap-coral-dark text-white text-base font-extrabold rounded-[12px_3px] px-4 py-3.5 shadow-[0_10px_22px_#ff5a5f47] hover:shadow-[0_13px_28px_#ff5a5f57] hover:-translate-y-px transition no-underline">Continue to my application</a>
+              </div>
+            </div>
+            <div class="mt-4 pt-3.5 border-t border-roadmap-coral-divider">
+              <a href="#" class="w-full min-h-10 flex justify-center items-center gap-2 bg-white border-2 border-roadmap-coral-line text-roadmap-coral-dark text-xs font-extrabold rounded-[12px_3px] px-4 py-2 hover:bg-roadmap-coral-soft transition no-underline">I've submitted my application — show step 3 <svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="14" viewBox="0 0 24 24" width="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            </div>
+          </div>
+        </li>
+
+        <!-- STATE: locked — surface-muted card, gray-bordered white badge, eyebrow + title only, no preview copy. Right-aligned padlock hint "Opens after step N" (third auto grid column, desktop only). Last item has no connector. -->
+        <li class="relative grid grid-cols-[46px_minmax(0,1fr)] gap-3.5 min-w-0 ">
+          <span class="relative z-10 flex justify-center items-center size-[46px] rounded-full font-extrabold text-xs bg-white border-2 border-roadmap-line-strong text-roadmap-muted-soft">3</span>
+          <div class="bg-roadmap-surface-muted border border-roadmap-line rounded-[14px_4px] p-5 transition-colors">
+            <div class="grid grid-cols-[38px_minmax(0,1fr)_auto] items-start gap-3">
+              <i class="flex justify-center items-center size-[38px] rounded-[10px_3px] bg-roadmap-tile text-roadmap-navy"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="19" viewBox="0 0 24 24" width="19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></i>
+              <div class="min-w-0">
+                <span class="block uppercase tracking-wider text-[8.5px] font-extrabold leading-snug text-roadmap-muted-soft">After applying</span>
+                <h3 class="m-0 mt-1 text-base leading-snug font-extrabold text-roadmap-muted-dim">Complete follow-up requests</h3>
+              </div>
+              <span class="justify-self-end flex items-center gap-1 uppercase tracking-wider text-[8.5px] font-extrabold text-roadmap-muted-soft whitespace-nowrap mt-1"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="11" viewBox="0 0 24 24" width="11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Opens after step 2</span>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+
+    <div class="mt-8 text-xs text-roadmap-muted max-w-[720px]">
+      <p class="m-0 font-extrabold uppercase tracking-widest text-[10px] text-roadmap-muted-soft mb-2">Usage rules</p>
+      <ul class="m-0 pl-4 grid gap-1">
+        <li>Timeline connectors (desktop): done→done solid green; the gradient green→coral appears ONLY on the segment entering the current step; current→upcoming coral→gray (<code class="bg-roadmap-tile px-1 rounded">line-strong</code>).</li>
+        <li>One current step per roadmap; the current card carries the page's single primary CTA.</li>
+        <li>Locked steps never show preview/body copy — eyebrow + title only.</li>
+        <li>Never mix the two radius systems: ticket corners are desktop-state-roadmap only.</li>
+        <li>Step navigation (added 2026-08-02): every done bar carries a green "Go back" link (desktop: right end of the bar; mobile: right of the DONE label — never beside the title, which can't shrink at 375px). The current card may carry one self-report advance button ("I've submitted my application — show step 3"); the final step never does. Locked desktop cards show the padlock hint "Opens after step N"; mobile locked rows stay bare.</li>
+        <li>All step-navigation controls are front-end state flips only — no data capture, no storage (2026-07-28 agreement). In the mocks they link between the four state files; in the app, bind them to the roadmap's user-interaction-only step state. Keep the reassurance footnote under the list ("Updating your step here only changes this page — never your actual application.").</li>
+      </ul>
+    </div>
+  </div>
+
+  </body>
+</html>

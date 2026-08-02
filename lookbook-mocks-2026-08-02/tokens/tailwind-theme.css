@@ -1,0 +1,67 @@
+/*
+ * Navvy roadmap theme tokens — Tailwind v4 @theme block.
+ * Verified verbatim against the app's compiled Tailwind CSS, 2026-08-02.
+ * FOR VERIFICATION ONLY: the app already defines all of these; nothing to add
+ * except the two PROPOSED tip tokens at the bottom (used by the tip callout).
+ */
+@theme {
+  /* App-shell (legacy) brand tokens */
+  --color-navvy-navy: #011628;
+  --color-navvy-red: #ff5757;
+  --color-navvy-red-dark: #e64545;
+  --color-navvy-green: #004b23;
+  --color-navvy-green-dark: #003d1c;
+
+  /* Roadmap theme — current visual direction */
+  --color-roadmap-navy: #1e2658;
+  --color-roadmap-navy-deep: #11163a;    /* desktop state-roadmap header */
+  --color-roadmap-navy-appbar: #16204f;  /* mobile appbar */
+  --color-roadmap-ink: #1e2658;
+
+  --color-roadmap-coral: #ff5a5f;
+  --color-roadmap-coral-dark: #e84a4f;
+  --color-roadmap-coral-soft: #ffedef;
+  --color-roadmap-coral-tint: #fffafb;
+  --color-roadmap-coral-line: #ffb9bc;
+  --color-roadmap-coral-divider: #f0dadd;
+
+  --color-roadmap-green: #0e744a;        /* unified green — green-bold #0e7a4e retired */
+  --color-roadmap-green-deep: #075d3a;
+  --color-roadmap-green-bright: #68e0a0;
+  --color-roadmap-green-soft: #e5f6ee;
+  --color-roadmap-green-line: #cae9da;
+
+  --color-roadmap-cream: #f7f6ef;
+  --color-roadmap-line: #dfe3ea;
+  --color-roadmap-line-strong: #d9dde5;
+  --color-roadmap-muted: #6f768c;
+  --color-roadmap-muted-dim: #60687a;
+  --color-roadmap-muted-soft: #9aa0b0;
+  --color-roadmap-muted-cool: #7a8093;
+  --color-roadmap-tile: #f1f3f5;
+  --color-roadmap-surface-muted: #f7f8fa;
+
+  --font-roadmap-body: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-roadmap-display: "Archivo Black", ui-sans-serif, sans-serif;
+
+  --shadow-roadmap-soft: 0 10px 26px #1e26580d;
+  --shadow-roadmap-strong: 0 20px 44px #0e744a2e;
+
+  /* PROPOSED additions (tip callout on general 03) — not yet in the app theme */
+  --color-roadmap-tip: #fdf8e3;
+  --color-roadmap-tip-line: #ecdfa8;
+}
+
+/*
+ * One-off values used inline in the mocks (matching live lookbook values):
+ *   Mobile CTA shadow:  shadow-[0_8px_18px_#ff5a5f4d]   (color change only on press)
+ *   Desktop CTA shadow: shadow-[0_10px_22px_#ff5a5f47]  → hover 0 13px 28px #ff5a5f57 + -translate-y-px
+ *   Card shadow:        shadow-[0_2px_6px_#1e26580a]
+ *   Current step halo:  shadow-[0_0_0_5px_var(--color-roadmap-coral-soft)]
+ *   Desktop page bg:    radial-gradient(circle at 12% 8%, #0e744a0f, transparent 28%), #f7f6ef
+ *
+ * Ticket-corner radii (desktop state-general roadmap ONLY):
+ *   hero 26px 6px · panel 6px 22px · step cards 14px 4px · CTAs 12px 3px
+ *   chips 6px 2px · small chips 7px 2px · icon tiles/badge 10px 3px
+ * Mobile application roadmap uses symmetric rounded-lg/xl/2xl/full.
+ */

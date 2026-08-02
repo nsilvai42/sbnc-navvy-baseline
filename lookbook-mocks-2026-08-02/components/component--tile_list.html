@@ -1,0 +1,122 @@
+<!-- drafting — reusable component specimen: tile list (sub-tiles, resource rows, doc chips, tip callout). Markup is copy-paste-ready Tailwind using the app's roadmap-* theme tokens; the inline @theme block exists only so this standalone file renders. -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Component — Tile list</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      /* Theme tokens verbatim from the app's compiled Tailwind CSS (see _ds tokens/colors.css + tokens/effects.css) */
+      @theme {
+        --color-roadmap-navy:#1e2658; --color-roadmap-navy-deep:#11163a; --color-roadmap-navy-appbar:#16204f;
+        --color-roadmap-ink:#1e2658;
+        --color-roadmap-coral:#ff5a5f; --color-roadmap-coral-dark:#e84a4f; --color-roadmap-coral-soft:#ffedef;
+        --color-roadmap-coral-tint:#fffafb; --color-roadmap-coral-line:#ffb9bc; --color-roadmap-coral-divider:#f0dadd;
+        --color-roadmap-green:#0e744a; --color-roadmap-green-deep:#075d3a;
+        --color-roadmap-green-bright:#68e0a0; --color-roadmap-green-soft:#e5f6ee; --color-roadmap-green-line:#cae9da;
+        --color-roadmap-cream:#f7f6ef; --color-roadmap-line:#dfe3ea; --color-roadmap-line-strong:#d9dde5;
+        --color-roadmap-muted:#6f768c; --color-roadmap-muted-dim:#60687a; --color-roadmap-muted-soft:#9aa0b0;
+        --color-roadmap-muted-cool:#7a8093; --color-roadmap-tile:#f1f3f5; --color-roadmap-surface-muted:#f7f8fa;
+        --font-roadmap-body:"Poppins",ui-sans-serif,system-ui,sans-serif;
+        --font-roadmap-display:"Archivo Black",ui-sans-serif,sans-serif;
+      }
+    </style>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&display=swap">
+
+  </head>
+  <body class="bg-roadmap-cream font-roadmap-body text-roadmap-navy antialiased p-6">
+
+  <div class="max-w-[900px] mx-auto">
+    <h1 class="text-2xl font-extrabold tracking-tight m-0">Component: Tile list</h1>
+    <p class="text-sm text-roadmap-muted mt-1.5 mb-8 max-w-[720px]">The stacked-tile pattern used inside current-step cards and on the ineligible page. Four variants: info sub-tile, resource row, doc chip, and tip callout. Tiles stack with <code class="text-xs bg-roadmap-tile px-1 py-0.5 rounded">grid gap-1.5</code>. Radii: <code class="text-xs bg-roadmap-tile px-1 py-0.5 rounded">rounded-lg/xl</code> on mobile, <code class="text-xs bg-roadmap-tile px-1 py-0.5 rounded">rounded-[6px_2px]</code> / <code class="text-xs bg-roadmap-tile px-1 py-0.5 rounded">rounded-[14px_4px]</code> on the desktop state roadmap.</p>
+
+    <!-- ============================================================ -->
+    <p class="uppercase tracking-widest text-[11px] font-extrabold text-roadmap-muted-soft mb-3">1 · Info sub-tile — white tile inside a current-step card (title + body, optional status chip)</p>
+    <div class="max-w-md grid gap-1.5 mb-2">
+      <div class="px-3.5 py-2.5 rounded-lg bg-white border border-roadmap-coral-divider">
+        <div class="flex items-center gap-2.5">
+          <span class="text-roadmap-coral-dark shrink-0"><svg aria-hidden="true" class="block" fill="none" height="17" viewBox="0 0 24 24" width="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg></span>
+          <strong class="text-roadmap-navy text-[13px] leading-snug font-extrabold">Save your confirmation</strong>
+        </div>
+        <p class="text-roadmap-muted m-0 mt-1 text-xs leading-snug">Save your confirmation number or take a screenshot as proof you applied.</p>
+      </div>
+      <div class="px-3.5 py-2.5 rounded-lg bg-white border border-roadmap-coral-divider">
+        <div class="flex items-center gap-2.5">
+          <span class="text-roadmap-coral-dark shrink-0"><svg aria-hidden="true" class="block" fill="none" height="17" viewBox="0 0 24 24" width="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></span>
+          <strong class="text-roadmap-navy text-[13px] leading-snug font-extrabold">Respond by the deadline</strong>
+        </div>
+        <span class="inline-flex uppercase tracking-wider text-[9.5px] font-extrabold rounded-md px-2 py-1 mt-1.5 bg-roadmap-coral-soft text-roadmap-coral-dark">Important</span>
+        <p class="text-roadmap-muted m-0 mt-1 text-xs leading-snug">If your agency requests an interview or documents, respond by the deadline to avoid delays.</p>
+      </div>
+    </div>
+    <p class="text-xs text-roadmap-muted mb-8">Border is <code class="bg-roadmap-tile px-1 rounded">coral-divider</code> inside coral current-step cards; use <code class="bg-roadmap-tile px-1 rounded">roadmap-line</code> on neutral surfaces. Icon color carries the meaning: coral-dark = action, green = positive, muted-dim = neutral. Desktop radius: <code class="bg-roadmap-tile px-1 rounded">rounded-[6px_2px]</code>.</p>
+
+    <!-- ============================================================ -->
+    <p class="uppercase tracking-widest text-[11px] font-extrabold text-roadmap-muted-soft mb-3">2 · Resource row — icon tile + title + body, optional CTA (ineligible page, resource lists)</p>
+    <div class="max-w-md grid gap-2 mb-2">
+      <div class="px-4 py-4 rounded-xl bg-roadmap-surface-muted border border-roadmap-line">
+        <div class="grid grid-cols-[38px_minmax(0,1fr)] items-center gap-3.5 min-w-0">
+          <span class="flex justify-center items-center size-[38px] rounded-lg bg-roadmap-navy text-white shrink-0"><svg aria-hidden="true" class="block" fill="none" height="19" viewBox="0 0 24 24" width="19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div class="min-w-0">
+            <strong class="block text-roadmap-navy text-[13px] leading-snug font-extrabold">findhelp.org</strong>
+            <p class="text-roadmap-muted m-0 mt-0.5 text-xs leading-snug">Search free local programs — food pantries, rent and utility help, low-cost clinics — by ZIP code.</p>
+          </div>
+        </div>
+        <a href="#" class="flex justify-center items-center gap-2.5 w-full mt-3.5 bg-roadmap-coral text-white font-roadmap-body font-bold text-base text-center rounded-xl px-4 py-5 shadow-[0_8px_18px_#ff5a5f4d] no-underline">Find help near me</a>
+      </div>
+      <div class="px-4 py-4 rounded-xl bg-white border border-roadmap-line">
+        <div class="grid grid-cols-[38px_minmax(0,1fr)] items-center gap-3.5 min-w-0">
+          <span class="flex justify-center items-center size-[38px] rounded-lg bg-white border border-roadmap-line-strong text-roadmap-navy shrink-0"><svg aria-hidden="true" class="block" fill="none" height="19" viewBox="0 0 24 24" width="19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+          <div class="min-w-0">
+            <strong class="block text-roadmap-navy text-[13px] leading-snug font-extrabold">211</strong>
+            <p class="text-roadmap-muted m-0 mt-0.5 text-xs leading-snug">Call or text 211 any time. Free and confidential — a real person helps you find support nearby.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="text-xs text-roadmap-muted mb-8">The row carrying the page's primary action gets the <code class="bg-roadmap-tile px-1 rounded">surface-muted</code> background, a filled navy icon tile, and the single coral CTA; quieter rows stay white with outlined icon tiles. Desktop radius: <code class="bg-roadmap-tile px-1 rounded">rounded-[14px_4px]</code>, icon tile <code class="bg-roadmap-tile px-1 rounded">rounded-[10px_3px]</code>.</p>
+
+    <!-- ============================================================ -->
+    <p class="uppercase tracking-widest text-[11px] font-extrabold text-roadmap-muted-soft mb-3">3 · Doc chip — compact document/requirement label</p>
+    <div class="max-w-md grid gap-1.5 mb-2">
+      <span class="flex items-center gap-2.5 px-3 py-2.5 text-xs rounded-lg bg-roadmap-tile text-roadmap-muted-dim">
+        <span class="text-roadmap-navy shrink-0"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="17" viewBox="0 0 24 24" width="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v4c0 1.6 2.7 3 6 3s6-1.4 6-3v-4M22 9v6"/></svg></span>
+        Photo ID
+      </span>
+      <span class="flex items-center gap-2.5 px-3 py-2.5 text-xs rounded-lg bg-roadmap-tile text-roadmap-muted-dim">
+        <span class="text-roadmap-navy shrink-0"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="17" viewBox="0 0 24 24" width="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h4M9 13h6M9 17h4"/></svg></span>
+        Proof of income
+      </span>
+    </div>
+    <div class="max-w-md grid grid-cols-3 gap-2 mb-2">
+      <span class="flex items-center justify-center gap-2 px-2 py-2 text-[9.5px] text-center rounded-[6px_2px] bg-roadmap-tile text-roadmap-muted-dim">
+        <span class="text-roadmap-navy"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="17" viewBox="0 0 24 24" width="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v4c0 1.6 2.7 3 6 3s6-1.4 6-3v-4M22 9v6"/></svg></span>
+        Photo ID
+      </span>
+      <span class="flex items-center justify-center gap-2 px-2 py-2 text-[9.5px] text-center rounded-[6px_2px] bg-roadmap-tile text-roadmap-muted-dim">
+        <span class="text-roadmap-navy"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="17" viewBox="0 0 24 24" width="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h4M9 13h6M9 17h4"/></svg></span>
+        Proof of income
+      </span>
+      <span class="flex items-center justify-center gap-2 px-2 py-2 text-[9.5px] text-center rounded-[6px_2px] bg-roadmap-tile text-roadmap-muted-dim">
+        <span class="text-roadmap-navy"><svg aria-hidden="true" class="inline-block shrink-0" fill="none" height="17" viewBox="0 0 24 24" width="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="m3 9 9-5 9 5"/><path d="M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/></svg></span>
+        Proof of where you live
+      </span>
+    </div>
+    <p class="text-xs text-roadmap-muted mb-8">Stacked full-width rows on mobile (<code class="bg-roadmap-tile px-1 rounded">rounded-lg</code>, text-xs); 3-up grid with <code class="bg-roadmap-tile px-1 rounded">rounded-[6px_2px]</code> and text-[9.5px] on desktop. Always followed by the reassurance line: <em>"You can still start even if you don't have everything."</em></p>
+
+    <!-- ============================================================ -->
+    <p class="uppercase tracking-widest text-[11px] font-extrabold text-roadmap-muted-soft mb-3">4 · Tip callout — pale-yellow advisory (PROPOSED tokens #fdf8e3 / #ecdfa8, not yet in the theme)</p>
+    <div class="max-w-md mb-2">
+      <div class="flex items-start gap-2.5 px-3.5 py-2.5 rounded-lg bg-[#fdf8e3] border border-[#ecdfa8]">
+        <span class="text-roadmap-muted-dim shrink-0 mt-0.5"><svg aria-hidden="true" class="block" fill="none" height="15" viewBox="0 0 24 24" width="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.5 1 2.5h6c0-1 .4-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg></span>
+        <p class="m-0 text-roadmap-muted-dim text-xs leading-snug"><strong class="font-bold text-roadmap-navy">Tip:</strong> Save your agency's number as a contact on your phone so you don't miss messages.</p>
+      </div>
+    </div>
+    <p class="text-xs text-roadmap-muted">The only non-token colors in the current mocks. If adopted, suggest adding as <code class="bg-roadmap-tile px-1 rounded">--color-roadmap-tip:#fdf8e3</code> and <code class="bg-roadmap-tile px-1 rounded">--color-roadmap-tip-line:#ecdfa8</code>.</p>
+  </div>
+
+  </body>
+</html>

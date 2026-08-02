@@ -1,0 +1,105 @@
+<!-- finalized parity — do not edit; copy into drafting/ to iterate -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Application roadmap — all done (draft redesign)</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      /* Theme tokens verbatim from the app's compiled Tailwind CSS (see _ds tokens/colors.css + tokens/effects.css) */
+      @theme {
+        --color-navvy-navy:#011628; --color-navvy-red:#ff5757; --color-navvy-red-dark:#e64545;
+        --color-navvy-green:#004b23; --color-navvy-green-dark:#003d1c;
+        --color-roadmap-navy:#1e2658; --color-roadmap-navy-deep:#11163a; --color-roadmap-navy-appbar:#16204f;
+        --color-roadmap-ink:#1e2658;
+        --color-roadmap-coral:#ff5a5f; --color-roadmap-coral-dark:#e84a4f; --color-roadmap-coral-soft:#ffedef;
+        --color-roadmap-coral-tint:#fffafb; --color-roadmap-coral-line:#ffb9bc; --color-roadmap-coral-divider:#f0dadd;
+        --color-roadmap-green:#0e744a; --color-roadmap-green-deep:#075d3a;
+        --color-roadmap-green-bright:#68e0a0; --color-roadmap-green-soft:#e5f6ee; --color-roadmap-green-line:#cae9da;
+        --color-roadmap-cream:#f7f6ef; --color-roadmap-line:#dfe3ea; --color-roadmap-line-strong:#d9dde5;
+        --color-roadmap-muted:#6f768c; --color-roadmap-muted-dim:#60687a; --color-roadmap-muted-soft:#9aa0b0;
+        --color-roadmap-muted-cool:#7a8093; --color-roadmap-tile:#f1f3f5; --color-roadmap-surface-muted:#f7f8fa;
+        --font-roadmap-body:"Poppins",ui-sans-serif,system-ui,sans-serif;
+        --font-roadmap-display:"Archivo Black",ui-sans-serif,sans-serif;
+        --shadow-roadmap-soft:0 10px 26px #1e26580d;
+        --shadow-roadmap-strong:0 20px 44px #0e744a2e;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&display=swap">
+  </head>
+  <body class="p-6 bg-white text-navvy-navy">
+
+<div class="font-roadmap-body text-roadmap-navy antialiased bg-white min-h-screen">
+  <header class="bg-roadmap-navy-appbar flex items-center gap-3.5 px-5 py-4">
+    <span class="bg-roadmap-coral text-white font-roadmap-display text-sm tracking-wide px-3 py-1.5 rounded-lg leading-none">NAVVY</span>
+    <span class="w-px h-5 bg-white/30"></span>
+    <span class="text-white text-sm font-bold">Madison College</span>
+    <span class="ml-auto text-white text-sm font-semibold">Sign out</span>
+  </header>
+
+  <main class="max-w-md mx-auto px-5 pt-7 pb-10">
+    <p class="text-xs font-bold tracking-widest uppercase text-roadmap-coral m-0 mb-1 pl-0.5">Navvy roadmap</p>
+    <h1 class="font-roadmap-display text-3xl tracking-tight leading-tight text-roadmap-navy m-0 pl-0.5">Congrats on applying!</h1>
+    <p class="text-sm text-roadmap-muted m-0 mt-2.5 pl-0.5 leading-normal">Watch for messages from the state agency in case they need more information.</p>
+
+    <section class="bg-roadmap-green-soft rounded-xl px-3.5 py-4 flex flex-col mt-6">
+      <div class="flex gap-3.5 items-start">
+        <div class="size-9 rounded-full flex justify-center items-center bg-roadmap-green shrink-0">
+          <svg aria-hidden="true" class="block" fill="none" viewBox="0 0 24 24" width="15" height="15"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="flex-1">
+          <p class="text-xs font-bold uppercase tracking-wider text-roadmap-green m-0 mb-1">Done</p>
+          <p class="text-base font-bold text-roadmap-navy m-0 leading-tight">We've submitted your application.</p>
+        </div>
+      </div>
+      <a href="#" class="block w-full mt-4 bg-roadmap-green text-white font-roadmap-body font-bold text-base text-center rounded-xl px-4 py-5 shadow-[0_8px_18px_#0e7a4e4d] no-underline">Review my application</a>
+    </section>
+
+    <h2 class="text-2xl font-extrabold tracking-tight leading-tight text-roadmap-navy m-0 mt-8 mb-5 pl-0.5">What happens next</h2>
+    <ol class="list-none m-0 p-0 grid gap-0" aria-label="What happens next">
+      <li class="relative grid grid-cols-[44px_minmax(0,1fr)] gap-4 pb-5 after:content-[''] after:absolute after:w-px after:top-[48px] after:bottom-0 after:left-[22px] after:bg-roadmap-line-strong">
+        <span class="relative z-10 flex justify-center items-center size-11 rounded-full bg-white border border-roadmap-line-strong text-roadmap-navy shrink-0">
+          <svg aria-hidden="true" class="block" fill="none" viewBox="0 0 24 24" width="19" height="19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+        </span>
+        <div class="min-w-0 border-b border-roadmap-line pb-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-wider text-roadmap-green m-0 mb-1">Now</p>
+          <p class="text-base font-bold text-roadmap-navy m-0 leading-tight">Watch for messages</p>
+          <p class="text-sm text-roadmap-muted-dim m-0 mt-1.5 leading-normal">Your agency may contact you for additional information. Check your email, mail, and voicemail — even texts or calls from unknown numbers.</p>
+        </div>
+      </li>
+      <li class="relative grid grid-cols-[44px_minmax(0,1fr)] gap-4 pb-5 after:content-[''] after:absolute after:w-px after:top-[48px] after:bottom-0 after:left-[22px] after:bg-roadmap-line-strong">
+        <span class="relative z-10 flex justify-center items-center size-11 rounded-full bg-white border border-roadmap-line-strong text-roadmap-navy shrink-0">
+          <svg aria-hidden="true" class="block" fill="none" viewBox="0 0 24 24" width="19" height="19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><path d="M5 5h14a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 19 16H10l-4 3.5V16H5a1.5 1.5 0 0 1-1.5-1.5v-8A1.5 1.5 0 0 1 5 5Z"/></svg>
+        </span>
+        <div class="min-w-0 border-b border-roadmap-line pb-5">
+          <p class="text-[10px] font-extrabold uppercase tracking-wider text-roadmap-green m-0 mb-1">If asked</p>
+          <p class="text-base font-bold text-roadmap-navy m-0 leading-tight">Respond by the deadline</p>
+          <p class="text-sm text-roadmap-muted-dim m-0 mt-1.5 leading-normal">Your agency may request an interview or additional documents. This is common and it doesn't mean you've done anything wrong.</p>
+        </div>
+      </li>
+      <li class="relative grid grid-cols-[44px_minmax(0,1fr)] gap-4">
+        <span class="relative z-10 flex justify-center items-center size-11 rounded-full bg-white border border-roadmap-line-strong text-roadmap-navy shrink-0">
+          <svg aria-hidden="true" class="block" fill="none" viewBox="0 0 24 24" width="19" height="19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M9 21h6M12 17v4"/></svg>
+        </span>
+        <div class="min-w-0">
+          <p class="text-[10px] font-extrabold uppercase tracking-wider text-roadmap-green m-0 mb-1">Check regularly</p>
+          <p class="text-base font-bold text-roadmap-navy m-0 leading-tight">Check your status</p>
+          <p class="text-sm text-roadmap-muted-dim m-0 mt-1.5 leading-normal">Use your ACCESS account or the MyACCESS app to track the status of your application.</p>
+        </div>
+      </li>
+    </ol>
+
+  </main>
+
+  <div class="fixed right-6 bottom-6 size-12 rounded-full bg-roadmap-navy flex justify-center items-center shadow-[0_8px_18px_#00000038]" aria-hidden="true">
+    <svg aria-hidden="true" class="block" fill="none" viewBox="0 0 24 24" width="20" height="20"><path d="M5 5h14a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 19 16H10l-4 3.5V16H5a1.5 1.5 0 0 1-1.5-1.5v-8A1.5 1.5 0 0 1 5 5Z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+
+
+  </body>
+</html>
